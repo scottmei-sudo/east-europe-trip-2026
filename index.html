@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173d34">
+  <title>捷奥匈候选地点图鉴</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #f5f7f3;
+      color: #17241f;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .hero {
+      min-height: 88svh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 18px calc(24px + env(safe-area-inset-bottom));
+      background:
+        linear-gradient(rgba(8,31,27,.2), rgba(8,31,27,.82)),
+        url("assets/prague.jpg") center/cover;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(34px, 11vw, 56px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    .hero p { max-width: 680px; margin: 14px 0 0; font-size: 15px; opacity: .94; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip {
+      border: 1px solid rgba(255,255,255,.48);
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 12px;
+      background: rgba(247,248,245,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #dbe2dc;
+      scrollbar-width: none;
+    }
+    .sticky-nav a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      color: #173d34;
+      border: 1px solid #d7e0da;
+      background: white;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main { padding: 16px 12px 44px; }
+    .pick-panel {
+      max-width: 1040px;
+      margin: 0 auto 20px;
+      display: grid;
+      gap: 10px;
+    }
+    .pick-card {
+      background: #fff;
+      border: 1px solid #dde3de;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 6px 20px rgba(24,42,35,.06);
+    }
+    .pick-card h2 { margin: 0 0 7px; font-size: 20px; color: #173d34; }
+    .pick-card ul { margin: 0; padding-left: 20px; }
+    .pick-card li { margin: 5px 0; }
+    .section { max-width: 1040px; margin: 24px auto 0; }
+    .section-head { margin: 0 2px 12px; }
+    .section-head p { margin: 0 0 3px; color: #65736d; font-size: 13px; }
+    .section-head h2 { margin: 0; font-size: 25px; color: #173d34; }
+    .grid { display: grid; gap: 14px; }
+    .card {
+      background: #fff;
+      border: 1px solid #dde3de;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(24,42,35,.07);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      background: #d9e2dc;
+    }
+    .card-body { padding: 13px 14px 14px; }
+    .meta-row { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 6px; }
+    .country, .nights {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .country { background: #173d34; color: white; }
+    .nights { background: #edf4f1; color: #236257; }
+    h3 { margin: 0; color: #173d34; font-size: 23px; line-height: 1.15; }
+    .en { margin: 3px 0 10px; color: #65736d; font-size: 13px; }
+    .score-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 9px; }
+    .score-row span { background: #f2f5f1; border-radius: 9px; padding: 7px 8px; color: #c58a1c; font-size: 12px; white-space: nowrap; }
+    .score-row b { color: #40534b; margin-right: 5px; }
+    .score-row em { color: #7b6b45; font-style: normal; margin-left: 4px; }
+    .role { display: inline-block; margin: 0 0 8px; background: #fff3d6; color: #7a5412; border-radius: 8px; padding: 5px 8px; font-size: 13px; font-weight: 700; }
+    .card-body p { margin: 7px 0; font-size: 14px; color: #35463f; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .actions a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      background: #173d34;
+      border-radius: 10px;
+      padding: 10px 8px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .actions .hotel { background: #c58a1c; }
+    .footer {
+      max-width: 1040px;
+      margin: 28px auto 0;
+      color: #65736d;
+      font-size: 12px;
+      padding: 0 2px;
+    }
+    @media (min-width: 720px) {
+      .hero { padding-left: 42px; padding-right: 42px; }
+      main { padding-left: 24px; padding-right: 24px; }
+      .pick-panel { grid-template-columns: repeat(3, 1fr); }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1080px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>捷克・奥地利・匈牙利<br>候选地点图鉴</h1>
+    <p>2026年9月25日-10月6日，2人旅行。这个手机网页只服务一个问题：哪些地点值得放进路线候选池。每张卡片都能继续查看小红书攻略和 Agoda 住宿。</p>
+    <div class="chips">
+      <span class="chip">12天窗口</span>
+      <span class="chip">先挑地点</span>
+      <span class="chip">手机可读</span>
+      <span class="chip">含攻略/住宿链接</span>
+    </div>
+  </header>
+  <nav class="sticky-nav"><a href="#路线锚点">路线锚点</a><a href="#捷克候选">捷克候选</a><a href="#奥地利候选">奥地利候选</a><a href="#匈牙利候选">匈牙利候选</a><a href="#布拉格内部">布拉格内部</a></nav>
+  <main>
+    <section class="pick-panel" id="pick">
+      <div class="pick-card"><h2>必选锚点</h2><ul><li>布拉格 Prague</li><li>维也纳 Vienna</li><li>布达佩斯 Budapest</li></ul></div>
+      <div class="pick-card"><h2>优先加 1-2 个</h2><ul><li>克鲁姆洛夫 Cesky Krumlov</li><li>萨尔茨堡 Salzburg</li><li>瓦豪 / 梅尔克</li><li>圣安德烈 / 多瑙河湾</li></ul></div>
+      <div class="pick-card"><h2>想湖山再加</h2><ul><li>哈尔施塔特 Hallstatt</li><li>戈绍 Gosau</li><li>Salzkammergut 湖区</li><li>巴拉顿湖 Balaton</li></ul></div>
+    </section>
+    
+            <section class="section" id="路线锚点">
+              <div class="section-head">
+                <p>三座首都构成最稳主轴，建议默认保留。</p>
+                <h2>路线锚点</h2>
+              </div>
+              <div class="grid">
+    <article class="card" data-section="路线锚点" data-country="捷克" data-rec="5">
+      <img class="card-img" src="assets/prague.jpg" alt="布拉格">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">3晚</span>
+        </div>
+        <h3>布拉格</h3>
+        <p class="en">Prague</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★★<em>5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">必选锚点</p>
+        <p><strong>适合：</strong>第一次中欧、城市漫步、城堡老城、咖啡馆</p>
+        <p><strong>取舍：</strong>游客密度高；至少留 2 个完整白天才舒服。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%20Prague%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="路线锚点" data-country="奥地利" data-rec="5">
+      <img class="card-img" src="assets/vienna.jpg" alt="维也纳">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">3晚</span>
+        </div>
+        <h3>维也纳</h3>
+        <p class="en">Vienna</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★★<em>5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">必选锚点</p>
+        <p><strong>适合：</strong>博物馆、皇宫、音乐、咖啡馆、公共交通</p>
+        <p><strong>取舍：</strong>文化密度很高，少于 2 个完整白天会很赶。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%BB%B4%E4%B9%9F%E7%BA%B3%20Vienna%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/vienna-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="路线锚点" data-country="匈牙利" data-rec="5">
+      <img class="card-img" src="assets/budapest.jpg" alt="布达佩斯">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">3晚</span>
+        </div>
+        <h3>布达佩斯</h3>
+        <p class="en">Budapest</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★★<em>5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">必选锚点</p>
+        <p><strong>适合：</strong>多瑙河夜景、温泉、城堡山、咖啡馆</p>
+        <p><strong>取舍：</strong>夜景和温泉都值得留体力，不宜只匆匆过境。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E8%BE%BE%E4%BD%A9%E6%96%AF%20Budapest%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/budapest-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    </div>
+            </section>
+            
+            <section class="section" id="捷克候选">
+              <div class="section-head">
+                <p>从布拉格向外加点，核心取舍是 CK 小镇 vs 轻量日游。</p>
+                <h2>捷克候选</h2>
+              </div>
+              <div class="grid">
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="4.5">
+      <img class="card-img" src="assets/cesky-krumlov.jpg" alt="克鲁姆洛夫">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>克鲁姆洛夫</h3>
+        <p class="en">Cesky Krumlov</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★½<em>4.5</em></span>
+          <span><b>热门</b>★★★★½<em>4.5</em></span>
+        </div>
+        <p class="role">童话小镇</p>
+        <p><strong>适合：</strong>中世纪小镇、河湾、城堡、摄影</p>
+        <p><strong>取舍：</strong>会增加行李移动；最好住 1 晚避开日间团客。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%85%8B%E9%B2%81%E5%A7%86%E6%B4%9B%E5%A4%AB%20Cesky%20Krumlov%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/cesky-krumlov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="4">
+      <img class="card-img" src="assets/kutna-hora.jpg" alt="库特纳霍拉">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">日游</span>
+        </div>
+        <h3>库特纳霍拉</h3>
+        <p class="en">Kutna Hora</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★<em>4</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">轻量历史日游</p>
+        <p><strong>适合：</strong>银矿历史、圣芭芭拉教堂、Sedlec 区域</p>
+        <p><strong>取舍：</strong>比 CK 省事，但画面冲击略弱。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%BA%93%E7%89%B9%E7%BA%B3%E9%9C%8D%E6%8B%89%20Kutna%20Hora%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/kutna-hora-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/karlovy-vary.jpg" alt="卡罗维发利">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">日游/1晚</span>
+        </div>
+        <h3>卡罗维发利</h3>
+        <p class="en">Karlovy Vary</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">温泉疗养城</p>
+        <p><strong>适合：</strong>温泉回廊、疗养建筑、慢节奏</p>
+        <p><strong>取舍：</strong>路线偏西，不顺去维也纳。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E7%BD%97%E7%BB%B4%E5%8F%91%E5%88%A9%20Karlovy%20Vary%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/karlovy-vary-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3">
+      <img class="card-img" src="assets/brno.jpg" alt="布尔诺">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>布尔诺</h3>
+        <p class="en">Brno</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★<em>3</em></span>
+          <span><b>热门</b>★★★<em>3</em></span>
+        </div>
+        <p class="role">顺路中转/第二城市</p>
+        <p><strong>适合：</strong>想看更日常的捷克城市、摩拉维亚入口</p>
+        <p><strong>取舍：</strong>三国首游容易变成“多一站但不够深”。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E5%B0%94%E8%AF%BA%20Brno%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/brno-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="2.5">
+      <img class="card-img" src="assets/olomouc.jpg" alt="奥洛穆茨">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>奥洛穆茨</h3>
+        <p class="en">Olomouc</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★½<em>2.5</em></span>
+          <span><b>热门</b>★★½<em>2.5</em></span>
+        </div>
+        <p class="role">小众历史城</p>
+        <p><strong>适合：</strong>巴洛克广场、学生城市、避开热门线</p>
+        <p><strong>取舍：</strong>偏东，和主线衔接一般。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%A5%A5%E6%B4%9B%E7%A9%86%E8%8C%A8%20Olomouc%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/olomouc-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3">
+      <img class="card-img" src="assets/mikulov-lednice-valtice.jpg" alt="米库洛夫 / 莱德尼采">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>米库洛夫 / 莱德尼采</h3>
+        <p class="en">Mikulov / Lednice-Valtice</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★<em>3</em></span>
+          <span><b>热门</b>★★★<em>3</em></span>
+        </div>
+        <p class="role">酒乡/庄园</p>
+        <p><strong>适合：</strong>南摩拉维亚葡萄酒、庄园景观、慢旅行</p>
+        <p><strong>取舍：</strong>需要更细交通设计，先作为备选。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%B1%B3%E5%BA%93%E6%B4%9B%E5%A4%AB%20%2F%20%E8%8E%B1%E5%BE%B7%E5%B0%BC%E9%87%87%20Mikulov%20%2F%20Lednice-Valtice%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/mikulov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    </div>
+            </section>
+            
+            <section class="section" id="奥地利候选">
+              <div class="section-head">
+                <p>维也纳稳，湖山漂亮但会增加绕路和天气风险。</p>
+                <h2>奥地利候选</h2>
+              </div>
+              <div class="grid">
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4.5">
+      <img class="card-img" src="assets/salzburg.jpg" alt="萨尔茨堡">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">1-2晚</span>
+        </div>
+        <h3>萨尔茨堡</h3>
+        <p class="en">Salzburg</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★½<em>4.5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">音乐老城/湖区入口</p>
+        <p><strong>适合：</strong>莫扎特、老城、城堡、阿尔卑斯入口</p>
+        <p><strong>取舍：</strong>往西绕路，通常要牺牲其他支线。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%90%A8%E5%B0%94%E8%8C%A8%E5%A0%A1%20Salzburg%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/salzburg-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4">
+      <img class="card-img" src="assets/wachau-melk.jpg" alt="瓦豪河谷 / 梅尔克">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">日游</span>
+        </div>
+        <h3>瓦豪河谷 / 梅尔克</h3>
+        <p class="en">Wachau / Melk</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★<em>4</em></span>
+          <span><b>热门</b>★★★½<em>3.5</em></span>
+        </div>
+        <p class="role">低风险加餐</p>
+        <p><strong>适合：</strong>多瑙河、葡萄园、修道院、秋季风景</p>
+        <p><strong>取舍：</strong>适合从维也纳日游，不必换住宿。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%B1%AA%E6%B2%B3%E8%B0%B7%20%2F%20%E6%A2%85%E5%B0%94%E5%85%8B%20Wachau%20%2F%20Melk%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/melk-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4">
+      <img class="card-img" src="assets/hallstatt-salzkammergut.jpg" alt="哈尔施塔特 / 湖区">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>哈尔施塔特 / 湖区</h3>
+        <p class="en">Hallstatt / Salzkammergut</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★<em>4</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">明信片湖山</p>
+        <p><strong>适合：</strong>湖山、摄影、奥地利自然风光</p>
+        <p><strong>取舍：</strong>交通和天气成本高，不建议和太多支线同塞。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E5%B0%94%E6%96%BD%E5%A1%94%E7%89%B9%20%2F%20%E6%B9%96%E5%8C%BA%20Hallstatt%20%2F%20Salzkammergut%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/hallstatt-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="3.5">
+      <img class="card-img" src="assets/gosau.jpg" alt="戈绍">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">湖区顺带</span>
+        </div>
+        <h3>戈绍</h3>
+        <p class="en">Gosau</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★<em>3</em></span>
+        </div>
+        <p class="role">湖区备选</p>
+        <p><strong>适合：</strong>Gosausee、山景、比 Hallstatt 更安静</p>
+        <p><strong>取舍：</strong>适合已有湖区计划时加入；单独前往成本偏高。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%88%88%E7%BB%8D%20Gosau%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/gosau-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="3">
+      <img class="card-img" src="assets/graz.jpg" alt="格拉茨">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">1-2晚</span>
+        </div>
+        <h3>格拉茨</h3>
+        <p class="en">Graz</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★<em>3</em></span>
+          <span><b>热门</b>★★★½<em>3.5</em></span>
+        </div>
+        <p class="role">设计/美食小众城</p>
+        <p><strong>适合：</strong>创意设计、街头艺术、美食、二刷感</p>
+        <p><strong>取舍：</strong>不是最短主线；本次优先级中等。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%A0%BC%E6%8B%89%E8%8C%A8%20Graz%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/graz-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="2.5">
+      <img class="card-img" src="assets/innsbruck.jpg" alt="因斯布鲁克">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">1-2晚</span>
+        </div>
+        <h3>因斯布鲁克</h3>
+        <p class="en">Innsbruck</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★½<em>2.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">阿尔卑斯城市</p>
+        <p><strong>适合：</strong>雪山城市、Nordkette、金顶屋</p>
+        <p><strong>取舍：</strong>距离明显偏西，12 天三国不建议优先。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9B%A0%E6%96%AF%E5%B8%83%E9%B2%81%E5%85%8B%20Innsbruck%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/innsbruck-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="2.5">
+      <img class="card-img" src="assets/baden-near-vienna.jpg" alt="巴登">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">奥地利</span>
+          <span class="nights">半日/日游</span>
+        </div>
+        <h3>巴登</h3>
+        <p class="en">Baden near Vienna</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★½<em>2.5</em></span>
+          <span><b>热门</b>★★½<em>2.5</em></span>
+        </div>
+        <p class="role">维也纳周边温泉小镇</p>
+        <p><strong>适合：</strong>轻松半日、温泉、帝国气质</p>
+        <p><strong>取舍：</strong>不是三国首游核心。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E7%99%BB%20Baden%20near%20Vienna%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/baden-at.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    </div>
+            </section>
+            
+            <section class="section" id="匈牙利候选">
+              <div class="section-head">
+                <p>布达佩斯外加点优先考虑轻量日游，再考虑酒乡/湖区慢线。</p>
+                <h2>匈牙利候选</h2>
+              </div>
+              <div class="grid">
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="4">
+      <img class="card-img" src="assets/szentendre-danube-bend.jpg" alt="圣安德烈 / 多瑙河湾">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">日游</span>
+        </div>
+        <h3>圣安德烈 / 多瑙河湾</h3>
+        <p class="en">Szentendre / Danube Bend</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★<em>4</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">布达佩斯轻量加餐</p>
+        <p><strong>适合：</strong>小镇、河湾、艺术氛围、低成本日游</p>
+        <p><strong>取舍：</strong>比 Eger/Balaton 更省时间，适合首游。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9C%A3%E5%AE%89%E5%BE%B7%E7%83%88%20%2F%20%E5%A4%9A%E7%91%99%E6%B2%B3%E6%B9%BE%20Szentendre%20%2F%20Danube%20Bend%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/szentendre-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3.5">
+      <img class="card-img" src="assets/eger.jpg" alt="埃格尔">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">1晚/日游</span>
+        </div>
+        <h3>埃格尔</h3>
+        <p class="en">Eger</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★½<em>3.5</em></span>
+        </div>
+        <p class="role">城堡/酒窖/温泉</p>
+        <p><strong>适合：</strong>Eger Castle、美女谷酒窖、土耳其浴</p>
+        <p><strong>取舍：</strong>如果不喝酒或不住夜，收益下降。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9F%83%E6%A0%BC%E5%B0%94%20Eger%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/eger-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3.5">
+      <img class="card-img" src="assets/balaton-tihany.jpg" alt="巴拉顿湖 / 蒂豪尼">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">1-2晚</span>
+        </div>
+        <h3>巴拉顿湖 / 蒂豪尼</h3>
+        <p class="en">Balaton / Tihany</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">湖区慢线</p>
+        <p><strong>适合：</strong>中欧大湖、火山丘、修道院、葡萄酒</p>
+        <p><strong>取舍：</strong>10月初已过盛夏水上氛围，更适合慢线。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E6%8B%89%E9%A1%BF%E6%B9%96%20%2F%20%E8%92%82%E8%B1%AA%E5%B0%BC%20Balaton%20%2F%20Tihany%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/tihany-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3">
+      <img class="card-img" src="assets/pecs.jpg" alt="佩奇">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">1-2晚</span>
+        </div>
+        <h3>佩奇</h3>
+        <p class="en">Pecs</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★<em>3</em></span>
+          <span><b>热门</b>★★★<em>3</em></span>
+        </div>
+        <p class="role">艺术/南部酒乡</p>
+        <p><strong>适合：</strong>老城、Zsolnay、Villany 酒区、Mecsek Hills</p>
+        <p><strong>取舍：</strong>路线偏南，离主线远。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E4%BD%A9%E5%A5%87%20Pecs%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/pecs-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3">
+      <img class="card-img" src="assets/gyor-pannonhalma.jpg" alt="杰尔 / 潘农哈尔马">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">1晚/顺路</span>
+        </div>
+        <h3>杰尔 / 潘农哈尔马</h3>
+        <p class="en">Gyor / Pannonhalma</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★<em>3</em></span>
+          <span><b>热门</b>★★½<em>2.5</em></span>
+        </div>
+        <p class="role">维也纳-布达佩斯之间支线</p>
+        <p><strong>适合：</strong>巴洛克老城、修道院、减少游客密度</p>
+        <p><strong>取舍：</strong>位置顺，但知名度较低。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%9D%B0%E5%B0%94%20%2F%20%E6%BD%98%E5%86%9C%E5%93%88%E5%B0%94%E9%A9%AC%20Gyor%20%2F%20Pannonhalma%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/gyor-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="2.5">
+      <img class="card-img" src="assets/sopron.jpg" alt="肖普朗">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">匈牙利</span>
+          <span class="nights">1晚</span>
+        </div>
+        <h3>肖普朗</h3>
+        <p class="en">Sopron</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★½<em>2.5</em></span>
+          <span><b>热门</b>★★½<em>2.5</em></span>
+        </div>
+        <p class="role">边境老城/酒乡</p>
+        <p><strong>适合：</strong>奥匈边境、老城、葡萄酒</p>
+        <p><strong>取舍：</strong>不是首游刚需。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%82%96%E6%99%AE%E6%9C%97%20Sopron%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/sopron-hu.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    </div>
+            </section>
+            
+            <section class="section" id="布拉格内部">
+              <div class="section-head">
+                <p>这些不影响跨城路线，后续排布拉格每日行程时再细化。</p>
+                <h2>布拉格内部</h2>
+              </div>
+              <div class="grid">
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="5">
+      <img class="card-img" src="assets/prague-castle.jpg" alt="布拉格城堡">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">半日</span>
+        </div>
+        <h3>布拉格城堡</h3>
+        <p class="en">Prague Castle</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★★<em>5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">布拉格核心景点</p>
+        <p><strong>适合：</strong>城堡区、圣维特、老城俯瞰</p>
+        <p><strong>取舍：</strong>游客多，适合早点到或错峰。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%E5%9F%8E%E5%A0%A1%20Prague%20Castle%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-prague-castle/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="5">
+      <img class="card-img" src="assets/charles-bridge.jpg" alt="查理大桥">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1-2小时</span>
+        </div>
+        <h3>查理大桥</h3>
+        <p class="en">Charles Bridge</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★★<em>5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">城市灵魂</p>
+        <p><strong>适合：</strong>老城和小城区连接、日出/日落摄影</p>
+        <p><strong>取舍：</strong>白天拥挤，清晨体验最好。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%9F%A5%E7%90%86%E5%A4%A7%E6%A1%A5%20Charles%20Bridge%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-charles-bridge/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="4.5">
+      <img class="card-img" src="assets/old-town-square-astronomical-clock.jpg" alt="老城广场 / 天文钟">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1-2小时</span>
+        </div>
+        <h3>老城广场 / 天文钟</h3>
+        <p class="en">Old Town Square / Astronomical Clock</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★½<em>4.5</em></span>
+          <span><b>热门</b>★★★★★<em>5</em></span>
+        </div>
+        <p class="role">老城核心</p>
+        <p><strong>适合：</strong>天文钟、泰恩教堂、老城广场氛围</p>
+        <p><strong>取舍：</strong>商业化明显，但第一次仍值得看。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%80%81%E5%9F%8E%E5%B9%BF%E5%9C%BA%20%2F%20%E5%A4%A9%E6%96%87%E9%92%9F%20Old%20Town%20Square%20%2F%20Astronomical%20Clock%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-old-town-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="4">
+      <img class="card-img" src="assets/powder-tower.jpg" alt="火药塔">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">30-60分钟</span>
+        </div>
+        <h3>火药塔</h3>
+        <p class="en">Powder Tower</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★★<em>4</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">老城地标</p>
+        <p><strong>适合：</strong>哥特塔楼、老城动线顺路</p>
+        <p><strong>取舍：</strong>适合顺路，不必单独绕行。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E8%8D%AF%E5%A1%94%20Powder%20Tower%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-powder-tower/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/wenceslas-square-national-museum.jpg" alt="瓦茨拉夫广场 / 国家博物馆">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1-2小时</span>
+        </div>
+        <h3>瓦茨拉夫广场 / 国家博物馆</h3>
+        <p class="en">Wenceslas Square / National Museum</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">新城区轴线</p>
+        <p><strong>适合：</strong>城市历史、博物馆外观、购物餐饮</p>
+        <p><strong>取舍：</strong>观光感不如老城强。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%8C%A8%E6%8B%89%E5%A4%AB%E5%B9%BF%E5%9C%BA%20%2F%20%E5%9B%BD%E5%AE%B6%E5%8D%9A%E7%89%A9%E9%A6%86%20Wenceslas%20Square%20%2F%20National%20Museum%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-wenceslas-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/dancing-house.jpg" alt="跳舞的房子">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">30分钟</span>
+        </div>
+        <h3>跳舞的房子</h3>
+        <p class="en">Dancing House</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">现代建筑打卡</p>
+        <p><strong>适合：</strong>建筑摄影、河边散步</p>
+        <p><strong>取舍：</strong>更适合顺路拍照。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%B7%B3%E8%88%9E%E7%9A%84%E6%88%BF%E5%AD%90%20Dancing%20House%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/head-of-franz-kafka.jpg" alt="卡夫卡头像">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">20-40分钟</span>
+        </div>
+        <h3>卡夫卡头像</h3>
+        <p class="en">Head of Franz Kafka</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">现代雕塑打卡</p>
+        <p><strong>适合：</strong>卡夫卡主题、动态雕塑、顺路补给</p>
+        <p><strong>取舍：</strong>停留时间短，适合和新城区串联。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E5%A4%AB%E5%8D%A1%E5%A4%B4%E5%83%8F%20Head%20of%20Franz%20Kafka%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/lennon-wall.jpg" alt="列侬墙">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">30分钟</span>
+        </div>
+        <h3>列侬墙</h3>
+        <p class="en">Lennon Wall</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★★<em>4</em></span>
+        </div>
+        <p class="role">小城区打卡</p>
+        <p><strong>适合：</strong>涂鸦、和平主题、查理大桥西岸顺路</p>
+        <p><strong>取舍：</strong>现场体验轻，适合顺路。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%88%97%E4%BE%AC%E5%A2%99%20Lennon%20Wall%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/havel-market.jpg" alt="哈维尔集市">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">30-60分钟</span>
+        </div>
+        <h3>哈维尔集市</h3>
+        <p class="en">Havel Market</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★½<em>3.5</em></span>
+        </div>
+        <p class="role">市集补给</p>
+        <p><strong>适合：</strong>水果、小纪念品、老城顺路</p>
+        <p><strong>取舍：</strong>不必专门安排很久。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E7%BB%B4%E5%B0%94%E9%9B%86%E5%B8%82%20Havel%20Market%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    
+
+    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
+      <img class="card-img" src="assets/mucha-museum.jpg" alt="穆夏美术馆">
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="country">捷克</span>
+          <span class="nights">1小时</span>
+        </div>
+        <h3>穆夏美术馆</h3>
+        <p class="en">Mucha Museum</p>
+        <div class="score-row">
+          <span><b>推荐</b>★★★½<em>3.5</em></span>
+          <span><b>热门</b>★★★½<em>3.5</em></span>
+        </div>
+        <p class="role">艺术小馆</p>
+        <p><strong>适合：</strong>新艺术风格、文创、雨天备选</p>
+        <p><strong>取舍：</strong>不是所有人都刚需。</p>
+        <div class="actions">
+          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%A9%86%E5%A4%8F%E7%BE%8E%E6%9C%AF%E9%A6%86%20Mucha%20Museum%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <a class="hotel" href="https://www.agoda.com/hotels-near-mucha-museum/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
+        </div>
+      </div>
+    </article>
+    </div>
+            </section>
+            
+    <footer class="footer">
+      <p>图片来自 Wikipedia/Wikimedia 缩略图；地点判断来自前期官方旅游站、小红书参考链接和路线取舍分析。Agoda 链接已尽量使用城市页或景点附近酒店页，避免跳到泛搜索页。</p>
+    </footer>
+  </main>
+</body>
+</html>
