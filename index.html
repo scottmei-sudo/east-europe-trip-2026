@@ -123,7 +123,7 @@
     .role { display: inline-block; margin: 0 0 8px; background: #fff3d6; color: #7a5412; border-radius: 8px; padding: 5px 8px; font-size: 13px; font-weight: 700; }
     .card-body p { margin: 7px 0; font-size: 14px; color: #35463f; }
     .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
-    .actions a {
+    .actions a, .actions button {
       display: block;
       text-align: center;
       text-decoration: none;
@@ -195,9 +195,10 @@
         <p><strong>适合：</strong>第一次中欧、城市漫步、城堡老城、咖啡馆</p>
         <p><strong>取舍：</strong>游客密度高；至少留 2 个完整白天才舒服。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%20Prague%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="布拉格 Prague 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%20Prague%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布拉格 Prague 攻略">布拉格 Prague 攻略</button></p>
       </div>
     </article>
     
@@ -219,9 +220,10 @@
         <p><strong>适合：</strong>博物馆、皇宫、音乐、咖啡馆、公共交通</p>
         <p><strong>取舍：</strong>文化密度很高，少于 2 个完整白天会很赶。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%BB%B4%E4%B9%9F%E7%BA%B3%20Vienna%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="维也纳 Vienna 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%BB%B4%E4%B9%9F%E7%BA%B3%20Vienna%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/vienna-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="维也纳 Vienna 攻略">维也纳 Vienna 攻略</button></p>
       </div>
     </article>
     
@@ -243,9 +245,10 @@
         <p><strong>适合：</strong>多瑙河夜景、温泉、城堡山、咖啡馆</p>
         <p><strong>取舍：</strong>夜景和温泉都值得留体力，不宜只匆匆过境。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E8%BE%BE%E4%BD%A9%E6%96%AF%20Budapest%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="布达佩斯 Budapest 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E8%BE%BE%E4%BD%A9%E6%96%AF%20Budapest%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/budapest-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布达佩斯 Budapest 攻略">布达佩斯 Budapest 攻略</button></p>
       </div>
     </article>
     </div>
@@ -274,9 +277,10 @@
         <p><strong>适合：</strong>中世纪小镇、河湾、城堡、摄影</p>
         <p><strong>取舍：</strong>会增加行李移动；最好住 1 晚避开日间团客。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%85%8B%E9%B2%81%E5%A7%86%E6%B4%9B%E5%A4%AB%20Cesky%20Krumlov%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="克鲁姆洛夫 Cesky Krumlov 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%85%8B%E9%B2%81%E5%A7%86%E6%B4%9B%E5%A4%AB%20Cesky%20Krumlov%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/cesky-krumlov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="克鲁姆洛夫 Cesky Krumlov 攻略">克鲁姆洛夫 Cesky Krumlov 攻略</button></p>
       </div>
     </article>
     
@@ -298,9 +302,10 @@
         <p><strong>适合：</strong>银矿历史、圣芭芭拉教堂、Sedlec 区域</p>
         <p><strong>取舍：</strong>比 CK 省事，但画面冲击略弱。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%BA%93%E7%89%B9%E7%BA%B3%E9%9C%8D%E6%8B%89%20Kutna%20Hora%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="库特纳霍拉 Kutna Hora 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%BA%93%E7%89%B9%E7%BA%B3%E9%9C%8D%E6%8B%89%20Kutna%20Hora%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/kutna-hora-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="库特纳霍拉 Kutna Hora 攻略">库特纳霍拉 Kutna Hora 攻略</button></p>
       </div>
     </article>
     
@@ -322,9 +327,10 @@
         <p><strong>适合：</strong>温泉回廊、疗养建筑、慢节奏</p>
         <p><strong>取舍：</strong>路线偏西，不顺去维也纳。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E7%BD%97%E7%BB%B4%E5%8F%91%E5%88%A9%20Karlovy%20Vary%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="卡罗维发利 Karlovy Vary 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E7%BD%97%E7%BB%B4%E5%8F%91%E5%88%A9%20Karlovy%20Vary%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/karlovy-vary-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="卡罗维发利 Karlovy Vary 攻略">卡罗维发利 Karlovy Vary 攻略</button></p>
       </div>
     </article>
     
@@ -346,9 +352,10 @@
         <p><strong>适合：</strong>想看更日常的捷克城市、摩拉维亚入口</p>
         <p><strong>取舍：</strong>三国首游容易变成“多一站但不够深”。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E5%B0%94%E8%AF%BA%20Brno%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="布尔诺 Brno 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E5%B0%94%E8%AF%BA%20Brno%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/brno-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布尔诺 Brno 攻略">布尔诺 Brno 攻略</button></p>
       </div>
     </article>
     
@@ -370,9 +377,10 @@
         <p><strong>适合：</strong>巴洛克广场、学生城市、避开热门线</p>
         <p><strong>取舍：</strong>偏东，和主线衔接一般。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%A5%A5%E6%B4%9B%E7%A9%86%E8%8C%A8%20Olomouc%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="奥洛穆茨 Olomouc 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%A5%A5%E6%B4%9B%E7%A9%86%E8%8C%A8%20Olomouc%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/olomouc-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="奥洛穆茨 Olomouc 攻略">奥洛穆茨 Olomouc 攻略</button></p>
       </div>
     </article>
     
@@ -394,9 +402,10 @@
         <p><strong>适合：</strong>南摩拉维亚葡萄酒、庄园景观、慢旅行</p>
         <p><strong>取舍：</strong>需要更细交通设计，先作为备选。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%B1%B3%E5%BA%93%E6%B4%9B%E5%A4%AB%20%2F%20%E8%8E%B1%E5%BE%B7%E5%B0%BC%E9%87%87%20Mikulov%20%2F%20Lednice-Valtice%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%B1%B3%E5%BA%93%E6%B4%9B%E5%A4%AB%20%2F%20%E8%8E%B1%E5%BE%B7%E5%B0%BC%E9%87%87%20Mikulov%20%2F%20Lednice-Valtice%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/mikulov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略">米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略</button></p>
       </div>
     </article>
     </div>
@@ -425,9 +434,10 @@
         <p><strong>适合：</strong>莫扎特、老城、城堡、阿尔卑斯入口</p>
         <p><strong>取舍：</strong>往西绕路，通常要牺牲其他支线。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%90%A8%E5%B0%94%E8%8C%A8%E5%A0%A1%20Salzburg%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="萨尔茨堡 Salzburg 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E8%90%A8%E5%B0%94%E8%8C%A8%E5%A0%A1%20Salzburg%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/salzburg-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="萨尔茨堡 Salzburg 攻略">萨尔茨堡 Salzburg 攻略</button></p>
       </div>
     </article>
     
@@ -449,9 +459,10 @@
         <p><strong>适合：</strong>多瑙河、葡萄园、修道院、秋季风景</p>
         <p><strong>取舍：</strong>适合从维也纳日游，不必换住宿。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%B1%AA%E6%B2%B3%E8%B0%B7%20%2F%20%E6%A2%85%E5%B0%94%E5%85%8B%20Wachau%20%2F%20Melk%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="瓦豪河谷 / 梅尔克 Wachau / Melk 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%B1%AA%E6%B2%B3%E8%B0%B7%20%2F%20%E6%A2%85%E5%B0%94%E5%85%8B%20Wachau%20%2F%20Melk%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/melk-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="瓦豪河谷 / 梅尔克 Wachau / Melk 攻略">瓦豪河谷 / 梅尔克 Wachau / Melk 攻略</button></p>
       </div>
     </article>
     
@@ -473,9 +484,10 @@
         <p><strong>适合：</strong>湖山、摄影、奥地利自然风光</p>
         <p><strong>取舍：</strong>交通和天气成本高，不建议和太多支线同塞。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E5%B0%94%E6%96%BD%E5%A1%94%E7%89%B9%20%2F%20%E6%B9%96%E5%8C%BA%20Hallstatt%20%2F%20Salzkammergut%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E5%B0%94%E6%96%BD%E5%A1%94%E7%89%B9%20%2F%20%E6%B9%96%E5%8C%BA%20Hallstatt%20%2F%20Salzkammergut%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/hallstatt-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略">哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略</button></p>
       </div>
     </article>
     
@@ -497,9 +509,10 @@
         <p><strong>适合：</strong>Gosausee、山景、比 Hallstatt 更安静</p>
         <p><strong>取舍：</strong>适合已有湖区计划时加入；单独前往成本偏高。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%88%88%E7%BB%8D%20Gosau%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="戈绍 Gosau 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E6%88%88%E7%BB%8D%20Gosau%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/gosau-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="戈绍 Gosau 攻略">戈绍 Gosau 攻略</button></p>
       </div>
     </article>
     
@@ -521,9 +534,10 @@
         <p><strong>适合：</strong>创意设计、街头艺术、美食、二刷感</p>
         <p><strong>取舍：</strong>不是最短主线；本次优先级中等。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%A0%BC%E6%8B%89%E8%8C%A8%20Graz%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="格拉茨 Graz 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E6%A0%BC%E6%8B%89%E8%8C%A8%20Graz%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/graz-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="格拉茨 Graz 攻略">格拉茨 Graz 攻略</button></p>
       </div>
     </article>
     
@@ -545,9 +559,10 @@
         <p><strong>适合：</strong>雪山城市、Nordkette、金顶屋</p>
         <p><strong>取舍：</strong>距离明显偏西，12 天三国不建议优先。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9B%A0%E6%96%AF%E5%B8%83%E9%B2%81%E5%85%8B%20Innsbruck%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="因斯布鲁克 Innsbruck 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%9B%A0%E6%96%AF%E5%B8%83%E9%B2%81%E5%85%8B%20Innsbruck%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/innsbruck-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="因斯布鲁克 Innsbruck 攻略">因斯布鲁克 Innsbruck 攻略</button></p>
       </div>
     </article>
     
@@ -569,9 +584,10 @@
         <p><strong>适合：</strong>轻松半日、温泉、帝国气质</p>
         <p><strong>取舍：</strong>不是三国首游核心。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E7%99%BB%20Baden%20near%20Vienna%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="巴登 Baden near Vienna 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E7%99%BB%20Baden%20near%20Vienna%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/baden-at.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="巴登 Baden near Vienna 攻略">巴登 Baden near Vienna 攻略</button></p>
       </div>
     </article>
     </div>
@@ -600,9 +616,10 @@
         <p><strong>适合：</strong>小镇、河湾、艺术氛围、低成本日游</p>
         <p><strong>取舍：</strong>比 Eger/Balaton 更省时间，适合首游。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9C%A3%E5%AE%89%E5%BE%B7%E7%83%88%20%2F%20%E5%A4%9A%E7%91%99%E6%B2%B3%E6%B9%BE%20Szentendre%20%2F%20Danube%20Bend%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%9C%A3%E5%AE%89%E5%BE%B7%E7%83%88%20%2F%20%E5%A4%9A%E7%91%99%E6%B2%B3%E6%B9%BE%20Szentendre%20%2F%20Danube%20Bend%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/szentendre-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略">圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略</button></p>
       </div>
     </article>
     
@@ -624,9 +641,10 @@
         <p><strong>适合：</strong>Eger Castle、美女谷酒窖、土耳其浴</p>
         <p><strong>取舍：</strong>如果不喝酒或不住夜，收益下降。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%9F%83%E6%A0%BC%E5%B0%94%20Eger%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="埃格尔 Eger 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%9F%83%E6%A0%BC%E5%B0%94%20Eger%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/eger-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="埃格尔 Eger 攻略">埃格尔 Eger 攻略</button></p>
       </div>
     </article>
     
@@ -648,9 +666,10 @@
         <p><strong>适合：</strong>中欧大湖、火山丘、修道院、葡萄酒</p>
         <p><strong>取舍：</strong>10月初已过盛夏水上氛围，更适合慢线。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E6%8B%89%E9%A1%BF%E6%B9%96%20%2F%20%E8%92%82%E8%B1%AA%E5%B0%BC%20Balaton%20%2F%20Tihany%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B7%B4%E6%8B%89%E9%A1%BF%E6%B9%96%20%2F%20%E8%92%82%E8%B1%AA%E5%B0%BC%20Balaton%20%2F%20Tihany%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/tihany-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略">巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略</button></p>
       </div>
     </article>
     
@@ -672,9 +691,10 @@
         <p><strong>适合：</strong>老城、Zsolnay、Villany 酒区、Mecsek Hills</p>
         <p><strong>取舍：</strong>路线偏南，离主线远。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E4%BD%A9%E5%A5%87%20Pecs%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="佩奇 Pecs 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E4%BD%A9%E5%A5%87%20Pecs%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/pecs-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="佩奇 Pecs 攻略">佩奇 Pecs 攻略</button></p>
       </div>
     </article>
     
@@ -696,9 +716,10 @@
         <p><strong>适合：</strong>巴洛克老城、修道院、减少游客密度</p>
         <p><strong>取舍：</strong>位置顺，但知名度较低。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%9D%B0%E5%B0%94%20%2F%20%E6%BD%98%E5%86%9C%E5%93%88%E5%B0%94%E9%A9%AC%20Gyor%20%2F%20Pannonhalma%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E6%9D%B0%E5%B0%94%20%2F%20%E6%BD%98%E5%86%9C%E5%93%88%E5%B0%94%E9%A9%AC%20Gyor%20%2F%20Pannonhalma%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/gyor-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略">杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略</button></p>
       </div>
     </article>
     
@@ -720,9 +741,10 @@
         <p><strong>适合：</strong>奥匈边境、老城、葡萄酒</p>
         <p><strong>取舍：</strong>不是首游刚需。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%82%96%E6%99%AE%E6%9C%97%20Sopron%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="肖普朗 Sopron 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E8%82%96%E6%99%AE%E6%9C%97%20Sopron%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/sopron-hu.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="肖普朗 Sopron 攻略">肖普朗 Sopron 攻略</button></p>
       </div>
     </article>
     </div>
@@ -751,9 +773,10 @@
         <p><strong>适合：</strong>城堡区、圣维特、老城俯瞰</p>
         <p><strong>取舍：</strong>游客多，适合早点到或错峰。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%E5%9F%8E%E5%A0%A1%20Prague%20Castle%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="布拉格城堡 Prague Castle 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%83%E6%8B%89%E6%A0%BC%E5%9F%8E%E5%A0%A1%20Prague%20Castle%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-prague-castle/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布拉格城堡 Prague Castle 攻略">布拉格城堡 Prague Castle 攻略</button></p>
       </div>
     </article>
     
@@ -775,9 +798,10 @@
         <p><strong>适合：</strong>老城和小城区连接、日出/日落摄影</p>
         <p><strong>取舍：</strong>白天拥挤，清晨体验最好。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E6%9F%A5%E7%90%86%E5%A4%A7%E6%A1%A5%20Charles%20Bridge%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="查理大桥 Charles Bridge 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E6%9F%A5%E7%90%86%E5%A4%A7%E6%A1%A5%20Charles%20Bridge%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-charles-bridge/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="查理大桥 Charles Bridge 攻略">查理大桥 Charles Bridge 攻略</button></p>
       </div>
     </article>
     
@@ -799,9 +823,10 @@
         <p><strong>适合：</strong>天文钟、泰恩教堂、老城广场氛围</p>
         <p><strong>取舍：</strong>商业化明显，但第一次仍值得看。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%80%81%E5%9F%8E%E5%B9%BF%E5%9C%BA%20%2F%20%E5%A4%A9%E6%96%87%E9%92%9F%20Old%20Town%20Square%20%2F%20Astronomical%20Clock%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E8%80%81%E5%9F%8E%E5%B9%BF%E5%9C%BA%20%2F%20%E5%A4%A9%E6%96%87%E9%92%9F%20Old%20Town%20Square%20%2F%20Astronomical%20Clock%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-old-town-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略">老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略</button></p>
       </div>
     </article>
     
@@ -823,9 +848,10 @@
         <p><strong>适合：</strong>哥特塔楼、老城动线顺路</p>
         <p><strong>取舍：</strong>适合顺路，不必单独绕行。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E8%8D%AF%E5%A1%94%20Powder%20Tower%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="火药塔 Powder Tower 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E8%8D%AF%E5%A1%94%20Powder%20Tower%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-powder-tower/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="火药塔 Powder Tower 攻略">火药塔 Powder Tower 攻略</button></p>
       </div>
     </article>
     
@@ -847,9 +873,10 @@
         <p><strong>适合：</strong>城市历史、博物馆外观、购物餐饮</p>
         <p><strong>取舍：</strong>观光感不如老城强。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%8C%A8%E6%8B%89%E5%A4%AB%E5%B9%BF%E5%9C%BA%20%2F%20%E5%9B%BD%E5%AE%B6%E5%8D%9A%E7%89%A9%E9%A6%86%20Wenceslas%20Square%20%2F%20National%20Museum%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%93%A6%E8%8C%A8%E6%8B%89%E5%A4%AB%E5%B9%BF%E5%9C%BA%20%2F%20%E5%9B%BD%E5%AE%B6%E5%8D%9A%E7%89%A9%E9%A6%86%20Wenceslas%20Square%20%2F%20National%20Museum%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-wenceslas-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略">瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略</button></p>
       </div>
     </article>
     
@@ -871,9 +898,10 @@
         <p><strong>适合：</strong>建筑摄影、河边散步</p>
         <p><strong>取舍：</strong>更适合顺路拍照。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E8%B7%B3%E8%88%9E%E7%9A%84%E6%88%BF%E5%AD%90%20Dancing%20House%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="跳舞的房子 Dancing House 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E8%B7%B3%E8%88%9E%E7%9A%84%E6%88%BF%E5%AD%90%20Dancing%20House%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="跳舞的房子 Dancing House 攻略">跳舞的房子 Dancing House 攻略</button></p>
       </div>
     </article>
     
@@ -895,9 +923,10 @@
         <p><strong>适合：</strong>卡夫卡主题、动态雕塑、顺路补给</p>
         <p><strong>取舍：</strong>停留时间短，适合和新城区串联。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E5%A4%AB%E5%8D%A1%E5%A4%B4%E5%83%8F%20Head%20of%20Franz%20Kafka%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="卡夫卡头像 Head of Franz Kafka 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%8D%A1%E5%A4%AB%E5%8D%A1%E5%A4%B4%E5%83%8F%20Head%20of%20Franz%20Kafka%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="卡夫卡头像 Head of Franz Kafka 攻略">卡夫卡头像 Head of Franz Kafka 攻略</button></p>
       </div>
     </article>
     
@@ -919,9 +948,10 @@
         <p><strong>适合：</strong>涂鸦、和平主题、查理大桥西岸顺路</p>
         <p><strong>取舍：</strong>现场体验轻，适合顺路。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%88%97%E4%BE%AC%E5%A2%99%20Lennon%20Wall%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="列侬墙 Lennon Wall 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%88%97%E4%BE%AC%E5%A2%99%20Lennon%20Wall%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="列侬墙 Lennon Wall 攻略">列侬墙 Lennon Wall 攻略</button></p>
       </div>
     </article>
     
@@ -943,9 +973,10 @@
         <p><strong>适合：</strong>水果、小纪念品、老城顺路</p>
         <p><strong>取舍：</strong>不必专门安排很久。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E7%BB%B4%E5%B0%94%E9%9B%86%E5%B8%82%20Havel%20Market%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="哈维尔集市 Havel Market 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E5%93%88%E7%BB%B4%E5%B0%94%E9%9B%86%E5%B8%82%20Havel%20Market%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="哈维尔集市 Havel Market 攻略">哈维尔集市 Havel Market 攻略</button></p>
       </div>
     </article>
     
@@ -967,9 +998,10 @@
         <p><strong>适合：</strong>新艺术风格、文创、雨天备选</p>
         <p><strong>取舍：</strong>不是所有人都刚需。</p>
         <div class="actions">
-          <a href="https://www.xiaohongshu.com/search_result?keyword=%E7%A9%86%E5%A4%8F%E7%BE%8E%E6%9C%AF%E9%A6%86%20Mucha%20Museum%20%E6%94%BB%E7%95%A5" target="_blank" rel="noopener">小红书详情</a>
+          <button class="xhs-open" type="button" data-keyword="穆夏美术馆 Mucha Museum 攻略" data-web="https://www.xiaohongshu.com/search_result?keyword=%E7%A9%86%E5%A4%8F%E7%BE%8E%E6%9C%AF%E9%A6%86%20Mucha%20Museum%20%E6%94%BB%E7%95%A5">小红书详情</button>
           <a class="hotel" href="https://www.agoda.com/hotels-near-mucha-museum/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
         </div>
+        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="穆夏美术馆 Mucha Museum 攻略">穆夏美术馆 Mucha Museum 攻略</button></p>
       </div>
     </article>
     </div>
@@ -979,5 +1011,55 @@
       <p>图片来自 Wikipedia/Wikimedia 缩略图；地点判断来自前期官方旅游站、小红书参考链接和路线取舍分析。Agoda 链接已尽量使用城市页或景点附近酒店页，避免跳到泛搜索页。</p>
     </footer>
   </main>
+  <div class="toast" id="toast">已复制搜索词</div>
+  <script>
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      window.clearTimeout(window.__toastTimer);
+      window.__toastTimer = window.setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('已复制：' + text);
+      } catch (error) {
+        showToast('请手动复制搜索词');
+      }
+    }
+    function openXhs(keyword, webUrl) {
+      copyText(keyword);
+      const encoded = encodeURIComponent(keyword);
+      const candidates = [
+        'xhsdiscover://search_result?keyword=' + encoded,
+        'xhsdiscover://search?keyword=' + encoded,
+        'xiaohongshu://search_result?keyword=' + encoded,
+        'xiaohongshu://search?keyword=' + encoded
+      ];
+      let idx = 0;
+      const start = Date.now();
+      const tryNext = () => {
+        if (document.hidden || Date.now() - start > 2600) return;
+        if (idx < candidates.length) {
+          window.location.href = candidates[idx++];
+          window.setTimeout(tryNext, 650);
+        } else {
+          window.location.href = webUrl;
+        }
+      };
+      showToast('正在尝试打开小红书 App，搜索词已复制');
+      tryNext();
+    }
+    document.addEventListener('click', (event) => {
+      const xhsButton = event.target.closest('.xhs-open');
+      if (xhsButton) {
+        openXhs(xhsButton.dataset.keyword, xhsButton.dataset.web);
+        return;
+      }
+      const copyButton = event.target.closest('.copy-keyword');
+      if (copyButton) copyText(copyButton.dataset.keyword);
+    });
+  </script>
 </body>
 </html>
