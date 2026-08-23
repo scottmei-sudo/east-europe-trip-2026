@@ -3,1047 +3,819 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173d34">
-  <title>捷奥匈候选地点图鉴</title>
+  <meta name="theme-color" content="#133a34">
+  <title>2026 捷奥匈正式旅行计划</title>
+  <meta name="description" content="2026 年 9 月 25 日至 10 月 9 日，上海出发，经布拉格、巴德伊舍、维也纳、布达佩斯的正式旅行计划。">
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: #f5f7f3;
-      color: #17241f;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: #14201d;
+      background: #f6f2ea;
       line-height: 1.55;
     }
     a { color: inherit; }
     .hero {
-      min-height: 88svh;
+      min-height: 92vh;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px 18px calc(24px + env(safe-area-inset-bottom));
+      display: grid;
+      align-items: end;
       background:
-        linear-gradient(rgba(8,31,27,.2), rgba(8,31,27,.82)),
+        linear-gradient(180deg, rgba(12, 23, 21, .08), rgba(12, 23, 21, .78)),
         url("assets/prague.jpg") center/cover;
+      padding: 28px clamp(18px, 5vw, 72px) 64px;
     }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(34px, 11vw, 56px);
-      line-height: 1.04;
+    .hero-inner { max-width: 980px; }
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 10px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      max-width: 850px;
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: .98;
       letter-spacing: 0;
     }
-    .hero p { max-width: 680px; margin: 14px 0 0; font-size: 15px; opacity: .94; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .chip {
-      border: 1px solid rgba(255,255,255,.48);
-      background: rgba(255,255,255,.12);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: rgba(255,255,255,.9);
     }
-    .sticky-nav {
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 32px;
+      max-width: 920px;
+    }
+    .stat {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.24);
+      padding: 14px;
+      backdrop-filter: blur(12px);
+    }
+    .stat b { display: block; font-size: 24px; }
+    .stat span { font-size: 12px; color: rgba(255,255,255,.8); }
+    .nav {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       display: flex;
-      gap: 8px;
       overflow-x: auto;
-      padding: 10px 12px;
-      background: rgba(247,248,245,.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #dbe2dc;
-      scrollbar-width: none;
+      gap: 8px;
+      padding: 10px max(14px, env(safe-area-inset-left));
+      background: rgba(246, 242, 234, .92);
+      border-bottom: 1px solid #ded6c9;
+      backdrop-filter: blur(14px);
     }
-    .sticky-nav a {
+    .nav a {
       flex: 0 0 auto;
+      min-width: 44px;
+      text-align: center;
       text-decoration: none;
-      color: #173d34;
-      border: 1px solid #d7e0da;
-      background: white;
-      border-radius: 999px;
-      padding: 7px 11px;
+      padding: 8px 10px;
+      border: 1px solid #d4c7b8;
+      background: #fffaf2;
       font-size: 13px;
       font-weight: 700;
     }
-    main { padding: 16px 12px 44px; }
-    .pick-panel {
-      max-width: 1040px;
-      margin: 0 auto 20px;
+    main { padding: 36px clamp(16px, 4vw, 64px) 70px; }
+    section { max-width: 1160px; margin: 0 auto 56px; }
+    .section-head { margin-bottom: 22px; }
+    .section-head span { color: #7b4b2a; font-weight: 800; font-size: 13px; text-transform: uppercase; }
+    h2 { margin: 4px 0 0; font-size: clamp(27px, 4vw, 44px); line-height: 1.08; letter-spacing: 0; }
+    .route-line {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 8px;
+      align-items: stretch;
     }
-    .pick-card {
-      background: #fff;
-      border: 1px solid #dde3de;
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 6px 20px rgba(24,42,35,.06);
+    .route-stop {
+      min-height: 92px;
+      padding: 12px;
+      background: #fffaf2;
+      border: 1px solid #dfd2c3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .pick-card h2 { margin: 0 0 7px; font-size: 20px; color: #173d34; }
-    .pick-card ul { margin: 0; padding-left: 20px; }
-    .pick-card li { margin: 5px 0; }
-    .section { max-width: 1040px; margin: 24px auto 0; }
-    .section-head { margin: 0 2px 12px; }
-    .section-head p { margin: 0 0 3px; color: #65736d; font-size: 13px; }
-    .section-head h2 { margin: 0; font-size: 25px; color: #173d34; }
-    .grid { display: grid; gap: 14px; }
-    .card {
-      background: #fff;
-      border: 1px solid #dde3de;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(24,42,35,.07);
+    .route-stop b { font-size: 15px; }
+    .route-stop span { font-size: 12px; color: #6b746e; }
+    .transfer-grid, .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
-    .card-img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-      background: #d9e2dc;
+    .transfer-card, .hotel-card {
+      background: #fffaf2;
+      border: 1px solid #dfd2c3;
+      padding: 16px;
     }
-    .card-body { padding: 13px 14px 14px; }
-    .meta-row { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 6px; }
-    .country, .nights {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 4px 9px;
+    .transfer-card span, .hotel-card span {
+      color: #7b4b2a;
       font-size: 12px;
-      font-weight: 700;
-    }
-    .country { background: #173d34; color: white; }
-    .nights { background: #edf4f1; color: #236257; }
-    h3 { margin: 0; color: #173d34; font-size: 23px; line-height: 1.15; }
-    .en { margin: 3px 0 10px; color: #65736d; font-size: 13px; }
-    .score-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 9px; }
-    .score-row span { background: #f2f5f1; border-radius: 9px; padding: 7px 8px; color: #c58a1c; font-size: 12px; white-space: nowrap; }
-    .score-row b { color: #40534b; margin-right: 5px; }
-    .score-row em { color: #7b6b45; font-style: normal; margin-left: 4px; }
-    .role { display: inline-block; margin: 0 0 8px; background: #fff3d6; color: #7a5412; border-radius: 8px; padding: 5px 8px; font-size: 13px; font-weight: 700; }
-    .card-body p { margin: 7px 0; font-size: 14px; color: #35463f; }
-    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
-    .actions a, .actions button {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-      background: #173d34;
-      border-radius: 10px;
-      padding: 10px 8px;
       font-weight: 800;
-      font-size: 14px;
     }
-    .actions .hotel { background: #c58a1c; }
+    .transfer-card h3, .hotel-card h3 { margin: 6px 0 8px; font-size: 19px; line-height: 1.2; }
+    .transfer-card p, .hotel-card p { margin: 5px 0; color: #4f5d56; font-size: 14px; }
+    .hotel-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 8px 10px;
+      background: #173d34;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .day-card {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 0;
+      margin-bottom: 18px;
+      background: #fffaf2;
+      border: 1px solid #dfd2c3;
+      scroll-margin-top: 74px;
+    }
+    .day-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+    }
+    .day-content { padding: 22px; }
+    .day-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #7b4b2a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .day-card h3 { margin: 8px 0 4px; font-size: clamp(25px, 3vw, 38px); line-height: 1.08; }
+    .mood { margin: 0 0 18px; color: #59635e; font-size: 16px; }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .mini-grid p {
+      margin: 0;
+      padding: 10px;
+      background: #f3eadc;
+      font-size: 13px;
+      min-height: 74px;
+    }
+    .mini-grid b { display: block; margin-bottom: 5px; color: #173d34; }
+    .plan-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid #e7dacb;
+    }
+    .plan-list li {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid #e7dacb;
+    }
+    .plan-list time { color: #7b4b2a; font-weight: 800; font-size: 13px; }
+    details {
+      margin-top: 14px;
+      padding: 12px;
+      background: #eef4ef;
+      border: 1px solid #cadbd0;
+    }
+    summary { cursor: pointer; font-weight: 800; }
+    details ul { margin: 10px 0 0; padding-left: 18px; }
+    .booking-wrap {
+      overflow-x: auto;
+      background: #fffaf2;
+      border: 1px solid #dfd2c3;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td { padding: 14px; border-bottom: 1px solid #e7dacb; text-align: left; vertical-align: top; }
+    th { background: #173d34; color: #fff; font-size: 13px; }
+    td { font-size: 14px; }
+    td a { color: #173d34; font-weight: 800; }
+    .priority { display: inline-block; padding: 4px 8px; background: #f0d06d; font-weight: 900; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+    .checklist li {
+      padding: 14px 16px;
+      background: #fffaf2;
+      border: 1px solid #dfd2c3;
+    }
     .footer {
-      max-width: 1040px;
-      margin: 28px auto 0;
-      color: #65736d;
-      font-size: 12px;
-      padding: 0 2px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px clamp(16px, 4vw, 64px) 48px;
+      color: #60706a;
+      font-size: 13px;
     }
-    @media (min-width: 720px) {
-      .hero { padding-left: 42px; padding-right: 42px; }
-      main { padding-left: 24px; padding-right: 24px; }
-      .pick-panel { grid-template-columns: repeat(3, 1fr); }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (min-width: 1080px) {
-      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 850px) {
+      .hero { min-height: 86vh; padding-bottom: 44px; }
+      .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .route-line { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .transfer-grid, .hotel-grid { grid-template-columns: 1fr; }
+      .day-card { grid-template-columns: 1fr; }
+      .day-card img { height: 210px; min-height: 210px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .checklist { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="hero">
-    <h1>捷克・奥地利・匈牙利<br>候选地点图鉴</h1>
-    <p>2026年9月25日-10月6日，2人旅行。这个手机网页只服务一个问题：哪些地点值得放进路线候选池。每张卡片都能继续查看小红书攻略和 Agoda 住宿。</p>
-    <div class="chips">
-      <span class="chip">12天窗口</span>
-      <span class="chip">先挑地点</span>
-      <span class="chip">手机可读</span>
-      <span class="chip">含攻略/住宿链接</span>
+    <div class="hero-inner">
+      <div class="kicker">正式行程 · 2026.09.25 - 2026.10.09 · 2 人</div>
+      <h1>捷克、奥地利、匈牙利旅行计划</h1>
+      <p>上海出发，经首尔过夜转机，进入布拉格；穿过奥地利湖区与维也纳，最后在布达佩斯结束欧洲段。</p>
+      <div class="hero-stats">
+        <div class="stat"><b>15 天</b><span>正式行程长度</span></div>
+        <div class="stat"><b>5 晚</b><span>捷克与湖区前段</span></div>
+        <div class="stat"><b>3 城</b><span>布拉格、维也纳、布达佩斯</span></div>
+        <div class="stat"><b>8 段</b><span>已订航班/火车</span></div>
+      </div>
     </div>
   </header>
-  <nav class="sticky-nav"><a href="#路线锚点">路线锚点</a><a href="#捷克候选">捷克候选</a><a href="#奥地利候选">奥地利候选</a><a href="#匈牙利候选">匈牙利候选</a><a href="#布拉格内部">布拉格内部</a></nav>
+  <nav class="nav"><a href="#day-1">D1</a><a href="#day-2">D2</a><a href="#day-3">D3</a><a href="#day-4">D4</a><a href="#day-5">D5</a><a href="#day-6">D6</a><a href="#day-7">D7</a><a href="#day-8">D8</a><a href="#day-9">D9</a><a href="#day-10">D10</a><a href="#day-11">D11</a><a href="#day-12">D12</a><a href="#day-13">D13</a><a href="#day-14">D14</a><a href="#day-15">D15</a></nav>
   <main>
-    <section class="pick-panel" id="pick">
-      <div class="pick-card"><h2>必选锚点</h2><ul><li>布拉格 Prague</li><li>维也纳 Vienna</li><li>布达佩斯 Budapest</li></ul></div>
-      <div class="pick-card"><h2>优先加 1-2 个</h2><ul><li>克鲁姆洛夫 Cesky Krumlov</li><li>萨尔茨堡 Salzburg</li><li>瓦豪 / 梅尔克</li><li>圣安德烈 / 多瑙河湾</li></ul></div>
-      <div class="pick-card"><h2>想湖山再加</h2><ul><li>哈尔施塔特 Hallstatt</li><li>戈绍 Gosau</li><li>Salzkammergut 湖区</li><li>巴拉顿湖 Balaton</li></ul></div>
+    <section id="overview">
+      <div class="section-head">
+        <span>Overview</span>
+        <h2>路线总览</h2>
+      </div>
+      <div class="route-line">
+        <div class="route-stop"><b>上海</b><span>9/25 出发</span></div>
+        <div class="route-stop"><b>首尔</b><span>机场过夜</span></div>
+        <div class="route-stop"><b>布拉格</b><span>9/26 - 9/29</span></div>
+        <div class="route-stop"><b>巴德伊舍</b><span>9/29 - 10/2</span></div>
+        <div class="route-stop"><b>维也纳</b><span>10/2 - 10/5</span></div>
+        <div class="route-stop"><b>布达佩斯</b><span>10/5 - 10/8</span></div>
+        <div class="route-stop"><b>北京</b><span>10/9 转机</span></div>
+        <div class="route-stop"><b>上海</b><span>10/9 抵达</span></div>
+      </div>
     </section>
+
+    <section>
+      <div class="section-head">
+        <span>Confirmed Transport</span>
+        <h2>已订交通</h2>
+      </div>
+      <div class="transfer-grid">
+    <article class="transfer-card">
+      <span>9/25 · 航班</span>
+      <h3>上海 -&gt; 首尔</h3>
+      <p>Korean Air KE892 · 08:50 - 11:55</p>
+    </article>
     
-            <section class="section" id="路线锚点">
-              <div class="section-head">
-                <p>三座首都构成最稳主轴，建议默认保留。</p>
-                <h2>路线锚点</h2>
-              </div>
-              <div class="grid">
-    <article class="card" data-section="路线锚点" data-country="捷克" data-rec="5">
-      <img class="card-img" src="assets/prague.jpg" alt="布拉格">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">3晚</span>
+
+    <article class="transfer-card">
+      <span>9/26 · 航班</span>
+      <h3>首尔 -&gt; 布拉格</h3>
+      <p>Korean Air KE969 · 11:05 - 17:05</p>
+    </article>
+    
+
+    <article class="transfer-card">
+      <span>9/29 · 火车</span>
+      <h3>布拉格 -&gt; 巴德伊舍</h3>
+      <p>EC 333 10:21-14:06 · IC 644 14:30-14:58 · REX 4412 15:08-16:03</p>
+    </article>
+    
+
+    <article class="transfer-card">
+      <span>10/2 · 火车</span>
+      <h3>巴德伊舍 -&gt; 维也纳</h3>
+      <p>R 4413 14:53-15:52 · IC 741 16:01-17:29 · REX 1653 17:36-18:37</p>
+    </article>
+    
+
+    <article class="transfer-card">
+      <span>10/5 · 火车</span>
+      <h3>维也纳 -&gt; 布达佩斯</h3>
+      <p>EC 147 14:00-17:02 · R 4633 17:12-17:19</p>
+    </article>
+    
+
+    <article class="transfer-card">
+      <span>10/8-10/9 · 航班</span>
+      <h3>布达佩斯 -&gt; 北京 -&gt; 上海</h3>
+      <p>CA720 13:00-04:10 · CA1507 07:30-10:00</p>
+    </article>
+    </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span>Confirmed Stays</span>
+        <h2>已订住宿</h2>
+      </div>
+      <div class="hotel-grid">
+    <article class="hotel-card">
+      <span>仁川/首尔机场</span>
+      <h3>Incheon Airport Global Hotel &amp; Suites</h3>
+      <p>2026-09-25 至 2026-09-26</p>
+      <p>8 Huinbawi-ro 59beon-gil, Yeongjong-gu, Incheon</p>
+      <p>+82-32-7461700</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Incheon+Airport+Global+Hotel+%26+Suites+8+Huinbawi-ro+59beon-gil+Incheon" target="_blank" rel="noopener">打开地图</a>
+    </article>
+    
+
+    <article class="hotel-card">
+      <span>布拉格</span>
+      <h3>Grandium Hotel Prague</h3>
+      <p>2026-09-26 至 2026-09-29</p>
+      <p>Politickych veznu 12/913, Prague 01, Prague, Czech Republic, 11000</p>
+      <p>+420 211 159 856</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Grandium+Hotel+Prague+Politickych+veznu+12+Prague" target="_blank" rel="noopener">打开地图</a>
+    </article>
+    
+
+    <article class="hotel-card">
+      <span>巴德伊舍</span>
+      <h3>Siebter Himmel</h3>
+      <p>2026-09-29 至 2026-10-02</p>
+      <p>Grazer Strasse 9, 4820 Bad Ischl, Austria</p>
+      <p>+43 676 7218684</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Siebter+Himmel+Grazer+Strasse+9+Bad+Ischl" target="_blank" rel="noopener">打开地图</a>
+    </article>
+    
+
+    <article class="hotel-card">
+      <span>维也纳</span>
+      <h3>Leonardo Hotel Vienna City West</h3>
+      <p>2026-10-02 至 2026-10-05</p>
+      <p>3-5 Graumanngasse, Rudolfsheim-Fuenfhaus, Vienna, Austria, 1150</p>
+      <p>+43 1 4180055</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo+Hotel+Vienna+City+West+Graumanngasse+Vienna" target="_blank" rel="noopener">打开地图</a>
+    </article>
+    
+
+    <article class="hotel-card">
+      <span>布达佩斯</span>
+      <h3>Hilton Budapest</h3>
+      <p>2026-10-05 至 2026-10-08</p>
+      <p>Hess A. ter 1-3, Castle District Budavar, Budapest, Hungary, 1014</p>
+      <p>+36 1 889 6922</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Hilton+Budapest+Hess+Andras+ter+1-3+Budapest" target="_blank" rel="noopener">打开地图</a>
+    </article>
+    </div>
+    </section>
+
+    <section id="days">
+      <div class="section-head">
+        <span>Daily Plan</span>
+        <h2>每日安排</h2>
+      </div>
+      
+    <article class="day-card" id="day-1">
+      <img src="assets/prague.jpg" alt="上海 -&gt; 首尔">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 1 · 周五</span>
+          <strong>2026-09-25</strong>
+        </div>
+        <h3>上海 -&gt; 首尔</h3>
+        <p class="mood">出发与转机恢复</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>中国 / 韩国</p>
+          <p><b>住宿</b>Incheon Airport Global Hotel &amp; Suites</p>
+          <p><b>已订/交通</b>KE892 08:50 - 11:55</p>
+        </div>
+        <ol class="plan-list"><li><time>上午</time><span>提前到机场，办理值机、托运和出境。</span></li><li><time>中午</time><span>抵达首尔后处理入境/转机住宿，前往机场酒店。</span></li><li><time>晚上</time><span>酒店附近简单晚餐，早点休息，不进首尔市区。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>第二天 11:05 起飞，今晚以恢复体力为主。</li><li>航站楼、行李直挂以韩航票面和柜台为准。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-2">
+      <img src="assets/prague.jpg" alt="首尔 -&gt; 布拉格">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 2 · 周六</span>
+          <strong>2026-09-26</strong>
+        </div>
+        <h3>首尔 -&gt; 布拉格</h3>
+        <p class="mood">抵达欧洲，轻量适应</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>韩国 / 捷克</p>
+          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>已订/交通</b>KE969 11:05 - 17:05</p>
+        </div>
+        <ol class="plan-list"><li><time>上午</time><span>从机场酒店前往航站楼，办理登机。</span></li><li><time>下午</time><span>抵达布拉格，入境、取行李，前往 Grandium Hotel Prague。</span></li><li><time>晚上</time><span>酒店周边轻松散步，可去 Wenceslas Square 或老城边缘。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>抵达日不安排查理桥/城堡这类大景点。</li><li>晚餐不要订太死，按入境和交通实际耗时调整。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-3">
+      <img src="assets/prague-castle.jpg" alt="布拉格">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 3 · 周日</span>
+          <strong>2026-09-27</strong>
         </div>
         <h3>布拉格</h3>
-        <p class="en">Prague</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★★<em>5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
+        <p class="mood">城堡、小城、查理桥</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>捷克</p>
+          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <p class="role">必选锚点</p>
-        <p><strong>适合：</strong>第一次中欧、城市漫步、城堡老城、咖啡馆</p>
-        <p><strong>取舍：</strong>游客密度高；至少留 2 个完整白天才舒服。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="布拉格 Prague 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B8%2583%25E6%258B%2589%25E6%25A0%25BC%2520Prague%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布拉格 Prague 攻略">布拉格 Prague 攻略</button></p>
+        <ol class="plan-list"><li><time>08:30</time><span>从酒店出发，坐车上城堡区，尽量少爬坡。</span></li><li><time>09:15</time><span>Prague Castle 布拉格城堡区域。</span></li><li><time>09:45</time><span>St. Vitus Cathedral 圣维特大教堂，优先进入。</span></li><li><time>12:30</time><span>小城午餐，优先 U Modre kachnicky 或附近捷克餐。</span></li><li><time>14:00</time><span>John Lennon Wall 列侬墙，小城街区散步。</span></li><li><time>15:30</time><span>Charles Bridge 查理大桥，从小城走回老城。</span></li><li><time>18:30</time><span>晚餐：Pork&#x27;s / Ribs of Prague / Lavka 三选一。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>核心保留：圣维特大教堂、查理大桥、列侬墙。</li><li>如果下雨，减少桥塔/户外停留，把午餐和咖啡时间拉长。</li></ul>
+        </details>
       </div>
     </article>
     
 
-    <article class="card" data-section="路线锚点" data-country="奥地利" data-rec="5">
-      <img class="card-img" src="assets/vienna.jpg" alt="维也纳">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">3晚</span>
+    <article class="day-card" id="day-4">
+      <img src="assets/old-town-square-astronomical-clock.jpg" alt="布拉格">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 4 · 周一</span>
+          <strong>2026-09-28</strong>
+        </div>
+        <h3>布拉格</h3>
+        <p class="mood">老城、火药塔、市集</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>捷克</p>
+          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
+        </div>
+        <ol class="plan-list"><li><time>08:30</time><span>Cafe Louvre 早餐/早午餐。</span></li><li><time>09:45</time><span>Wenceslas Square 瓦茨拉夫广场。</span></li><li><time>10:30</time><span>Powder Tower 火药塔，可登塔或只拍外观。</span></li><li><time>11:30</time><span>Old Town Square、Tyn Church、Astronomical Clock。</span></li><li><time>12:45</time><span>午餐：Kantyna，注意不接受预约，建议错峰。</span></li><li><time>14:30</time><span>Havelsky Market 哈维尔市集，顺路买小纪念品。</span></li><li><time>15:30</time><span>Creme de la Creme / Kolacherie / Trdlo 甜品补给。</span></li><li><time>18:30</time><span>晚餐：Kolkovna V Kolkovne / Pivovar U Supa。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>如果前一天很累，Dancing House 可删。</li><li>如果想看博物馆，可把下午一段替换为 Mucha Museum。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-5">
+      <img src="assets/hallstatt-salzkammergut.jpg" alt="布拉格 -&gt; 巴德伊舍">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 5 · 周二</span>
+          <strong>2026-09-29</strong>
+        </div>
+        <h3>布拉格 -&gt; 巴德伊舍</h3>
+        <p class="mood">跨城移动，抵达后休息</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>捷克 / 奥地利</p>
+          <p><b>住宿</b>Siebter Himmel</p>
+          <p><b>已订/交通</b>EC 333 + IC 644 + REX 4412</p>
+        </div>
+        <ol class="plan-list"><li><time>上午</time><span>酒店退房，预留足够时间去火车站。</span></li><li><time>10:21-16:03</time><span>三段火车前往 Bad Ischl，换乘时间分别约 24 分钟和 10 分钟。</span></li><li><time>傍晚</time><span>入住 Siebter Himmel，Bad Ischl 市中心轻量 citywalk。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>10 分钟换乘较紧，前一段晚点时要迅速确认下一班站台。</li><li>当天不安排重景点。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-6">
+      <img src="assets/hallstatt-salzkammergut.jpg" alt="巴德伊舍 / 圣沃尔夫冈湖区">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 6 · 周三</span>
+          <strong>2026-09-30</strong>
+        </div>
+        <h3>巴德伊舍 / 圣沃尔夫冈湖区</h3>
+        <p class="mood">SchafbergBahn 与湖区</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利</p>
+          <p><b>住宿</b>Siebter Himmel</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
+        </div>
+        <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 St. Wolfgang / SchafbergBahn。</span></li><li><time>09:30</time><span>SchafbergBahn 登山火车，建议提前买票并预留天气弹性。</span></li><li><time>11:00</time><span>山顶观景和拍照。</span></li><li><time>12:30</time><span>山上或 St. Wolfgang 午餐。</span></li><li><time>14:30</time><span>返回湖边小镇散步。</span></li><li><time>17:00</time><span>回 Bad Ischl，市区散步和晚餐。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>遇到大雨/大雾可改 Bad Ischl + St. Wolfgang 轻松线。</li><li>旅游景点通常不含在 Guest Mobility Ticket 内，票价需单独确认。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-7">
+      <img src="assets/gosau.jpg" alt="哈尔施塔特 / 戈绍">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 7 · 周四</span>
+          <strong>2026-10-01</strong>
+        </div>
+        <h3>哈尔施塔特 / 戈绍</h3>
+        <p class="mood">盐矿、观景台、湖边</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利</p>
+          <p><b>住宿</b>Siebter Himmel</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
+        </div>
+        <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 Hallstatt。</span></li><li><time>09:30</time><span>Hallstatt Skywalk / Aussichtspunkt Hallstatt。</span></li><li><time>10:30</time><span>Salzwelten Hallstatt 盐矿。</span></li><li><time>13:00</time><span>Hallstatt 午餐，湖边短走。</span></li><li><time>15:00</time><span>前往 Gosausee。</span></li><li><time>16:00</time><span>Gosausee 湖边散步，天气好时保留 1-1.5 小时。</span></li><li><time>18:30</time><span>返回 Bad Ischl 晚餐。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>Salzwelten Hallstatt 2026 年 9 月后恢复开放，建议提前订票。</li><li>盐矿需要保暖衣物和适合走路的鞋。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-8">
+      <img src="assets/vienna.jpg" alt="巴德伊舍 -&gt; 维也纳">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 8 · 周五</span>
+          <strong>2026-10-02</strong>
+        </div>
+        <h3>巴德伊舍 -&gt; 维也纳</h3>
+        <p class="mood">跨城移动，维也纳落脚</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利</p>
+          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
+          <p><b>已订/交通</b>R 4413 + IC 741 + REX 1653</p>
+        </div>
+        <ol class="plan-list"><li><time>上午</time><span>Bad Ischl 轻松早餐，整理行李，补买路上食品。</span></li><li><time>14:53-18:37</time><span>三段火车前往维也纳。</span></li><li><time>晚上</time><span>入住 Leonardo Hotel Vienna City West，酒店周边晚餐。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>抵达维也纳已是傍晚，不安排博物馆/宫殿。</li><li>换乘时间短，优先保证交通。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-9">
+      <img src="assets/vienna.jpg" alt="维也纳">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 9 · 周六</span>
+          <strong>2026-10-03</strong>
         </div>
         <h3>维也纳</h3>
-        <p class="en">Vienna</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★★<em>5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
+        <p class="mood">美景宫、卡尔教堂、金色大厅</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利</p>
+          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <p class="role">必选锚点</p>
-        <p><strong>适合：</strong>博物馆、皇宫、音乐、咖啡馆、公共交通</p>
-        <p><strong>取舍：</strong>文化密度很高，少于 2 个完整白天会很赶。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="维也纳 Vienna 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%25BB%25B4%25E4%25B9%259F%25E7%25BA%25B3%2520Vienna%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/vienna-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="维也纳 Vienna 攻略">维也纳 Vienna 攻略</button></p>
+        <ol class="plan-list"><li><time>09:00</time><span>Upper Belvedere 美景宫上宫，建议预约时段票。</span></li><li><time>11:30</time><span>美景宫花园/下宫外观。</span></li><li><time>12:30</time><span>午餐。</span></li><li><time>14:00</time><span>Karlskirche 卡尔教堂。</span></li><li><time>15:30</time><span>Musikverein 金色大厅外观/参观或音乐会预留。</span></li><li><time>17:00</time><span>市中心咖啡馆休息。</span></li><li><time>19:00</time><span>晚餐，若有音乐会则按演出时间调整。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>Upper Belvedere 热门展厅建议提前买时段票。</li><li>金色大厅如果想入内，需确认当天导览或演出票。</li></ul>
+        </details>
       </div>
     </article>
     
 
-    <article class="card" data-section="路线锚点" data-country="匈牙利" data-rec="5">
-      <img class="card-img" src="assets/budapest.jpg" alt="布达佩斯">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">3晚</span>
+    <article class="day-card" id="day-10">
+      <img src="assets/vienna.jpg" alt="维也纳">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 10 · 周日</span>
+          <strong>2026-10-04</strong>
+        </div>
+        <h3>维也纳</h3>
+        <p class="mood">内城、霍夫堡、教堂线</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利</p>
+          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
+        </div>
+        <ol class="plan-list"><li><time>09:00</time><span>St. Stephen&#x27;s Cathedral 圣斯蒂芬主教座堂。</span></li><li><time>10:30</time><span>Pfarre St. Michael 圣弥额尔堂。</span></li><li><time>11:00</time><span>Hofburg 霍夫堡区域散步。</span></li><li><time>11:30</time><span>Sisi Museum 茜茜公主博物馆，建议提前预约/购票。</span></li><li><time>13:30</time><span>午餐 + 咖啡馆休息。</span></li><li><time>15:30</time><span>Votivkirche 沃蒂夫教堂。</span></li><li><time>17:00</time><span>Ringstrasse 或市政厅周边散步。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>Sisi Museum 最后入场较早，不要放到傍晚。</li><li>这天是周日，餐厅和商店营业状态需提前确认。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-11">
+      <img src="assets/budapest.jpg" alt="维也纳 -&gt; 布达佩斯">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 11 · 周一</span>
+          <strong>2026-10-05</strong>
+        </div>
+        <h3>维也纳 -&gt; 布达佩斯</h3>
+        <p class="mood">跨城移动，城堡区夜景</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>奥地利 / 匈牙利</p>
+          <p><b>住宿</b>Hilton Budapest</p>
+          <p><b>已订/交通</b>EC 147 + R 4633</p>
+        </div>
+        <ol class="plan-list"><li><time>上午</time><span>维也纳轻松早餐，退房，避免安排大型博物馆。</span></li><li><time>14:00-17:19</time><span>火车前往布达佩斯。</span></li><li><time>傍晚</time><span>入住 Hilton Budapest，休息。</span></li><li><time>晚上</time><span>城堡区夜景散步，优先渔人堡/马加什教堂外观。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>Hilton Budapest 位于布达城堡区，夜景优势很大。</li><li>拖行李上山动线要提前查好。</li></ul>
+        </details>
+      </div>
+    </article>
+    
+
+    <article class="day-card" id="day-12">
+      <img src="assets/budapest.jpg" alt="布达佩斯">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 12 · 周二</span>
+          <strong>2026-10-06</strong>
         </div>
         <h3>布达佩斯</h3>
-        <p class="en">Budapest</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★★<em>5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
+        <p class="mood">佩斯城市轴线</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>匈牙利</p>
+          <p><b>住宿</b>Hilton Budapest</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <p class="role">必选锚点</p>
-        <p><strong>适合：</strong>多瑙河夜景、温泉、城堡山、咖啡馆</p>
-        <p><strong>取舍：</strong>夜景和温泉都值得留体力，不宜只匆匆过境。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="布达佩斯 Budapest 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B8%2583%25E8%25BE%25BE%25E4%25BD%25A9%25E6%2596%25AF%2520Budapest%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/budapest-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布达佩斯 Budapest 攻略">布达佩斯 Budapest 攻略</button></p>
-      </div>
-    </article>
-    </div>
-            </section>
-            
-            <section class="section" id="捷克候选">
-              <div class="section-head">
-                <p>从布拉格向外加点，核心取舍是 CK 小镇 vs 轻量日游。</p>
-                <h2>捷克候选</h2>
-              </div>
-              <div class="grid">
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="4.5">
-      <img class="card-img" src="assets/cesky-krumlov.jpg" alt="克鲁姆洛夫">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1晚</span>
-        </div>
-        <h3>克鲁姆洛夫</h3>
-        <p class="en">Cesky Krumlov</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★½<em>4.5</em></span>
-          <span><b>热门</b>★★★★½<em>4.5</em></span>
-        </div>
-        <p class="role">童话小镇</p>
-        <p><strong>适合：</strong>中世纪小镇、河湾、城堡、摄影</p>
-        <p><strong>取舍：</strong>会增加行李移动；最好住 1 晚避开日间团客。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="克鲁姆洛夫 Cesky Krumlov 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%2585%258B%25E9%25B2%2581%25E5%25A7%2586%25E6%25B4%259B%25E5%25A4%25AB%2520Cesky%2520Krumlov%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/cesky-krumlov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="克鲁姆洛夫 Cesky Krumlov 攻略">克鲁姆洛夫 Cesky Krumlov 攻略</button></p>
+        <ol class="plan-list"><li><time>09:00</time><span>Central Market Hall 中央市场，适合早餐/小吃/伴手礼。</span></li><li><time>11:00</time><span>沿多瑙河或搭车前往市中心。</span></li><li><time>13:30</time><span>Hungarian State Opera House 国家歌剧院，建议预约英文导览。</span></li><li><time>15:00</time><span>St. Stephen&#x27;s Basilica 圣伊什特万圣殿，含穹顶观景可选。</span></li><li><time>16:30</time><span>Parliament Building 国会大厦外观/导览。</span></li><li><time>18:30</time><span>多瑙河边黄昏散步。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>国会大厦入内必须参加导览，官方票务优先。</li><li>国家歌剧院英文导览通常每日固定场次。</li></ul>
+        </details>
       </div>
     </article>
     
 
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="4">
-      <img class="card-img" src="assets/kutna-hora.jpg" alt="库特纳霍拉">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">日游</span>
+    <article class="day-card" id="day-13">
+      <img src="assets/budapest.jpg" alt="布达佩斯">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 13 · 周三</span>
+          <strong>2026-10-07</strong>
         </div>
-        <h3>库特纳霍拉</h3>
-        <p class="en">Kutna Hora</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★<em>4</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
+        <h3>布达佩斯</h3>
+        <p class="mood">布达城堡山</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>匈牙利</p>
+          <p><b>住宿</b>Hilton Budapest</p>
+          <p><b>已订/交通</b>步行 + 公共交通</p>
         </div>
-        <p class="role">轻量历史日游</p>
-        <p><strong>适合：</strong>银矿历史、圣芭芭拉教堂、Sedlec 区域</p>
-        <p><strong>取舍：</strong>比 CK 省事，但画面冲击略弱。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="库特纳霍拉 Kutna Hora 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25BA%2593%25E7%2589%25B9%25E7%25BA%25B3%25E9%259C%258D%25E6%258B%2589%2520Kutna%2520Hora%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/kutna-hora-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="库特纳霍拉 Kutna Hora 攻略">库特纳霍拉 Kutna Hora 攻略</button></p>
+        <ol class="plan-list"><li><time>08:30</time><span>Fisherman&#x27;s Bastion 渔人堡，住在城堡区可早起避人潮。</span></li><li><time>09:30</time><span>Matthias Church 马加什教堂。</span></li><li><time>11:00</time><span>Buda Castle 布达城堡区域。</span></li><li><time>12:30</time><span>城堡区午餐/咖啡。</span></li><li><time>14:30</time><span>下山前往 Szechenyi Chain Bridge 塞切尼链桥。</span></li><li><time>16:00</time><span>多瑙河两岸散步或回酒店休息。</span></li><li><time>19:00</time><span>告别晚餐，可选择河景餐厅或城堡区附近。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>这天住址就在布达城堡区，非常适合早晚各看一次城堡山景色。</li><li>如果 Day 12 国会大厦没有入内，可把国会导览挪到这天下午。</li></ul>
+        </details>
       </div>
     </article>
     
 
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/karlovy-vary.jpg" alt="卡罗维发利">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">日游/1晚</span>
+    <article class="day-card" id="day-14">
+      <img src="assets/budapest.jpg" alt="布达佩斯 -&gt; 北京">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 14 · 周四</span>
+          <strong>2026-10-08</strong>
         </div>
-        <h3>卡罗维发利</h3>
-        <p class="en">Karlovy Vary</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
+        <h3>布达佩斯 -&gt; 北京</h3>
+        <p class="mood">返程航班</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>匈牙利 / 中国</p>
+          <p><b>住宿</b>飞机上</p>
+          <p><b>已订/交通</b>CA720 13:00 - 次日 04:10</p>
         </div>
-        <p class="role">温泉疗养城</p>
-        <p><strong>适合：</strong>温泉回廊、疗养建筑、慢节奏</p>
-        <p><strong>取舍：</strong>路线偏西，不顺去维也纳。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="卡罗维发利 Karlovy Vary 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%258D%25A1%25E7%25BD%2597%25E7%25BB%25B4%25E5%258F%2591%25E5%2588%25A9%2520Karlovy%2520Vary%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/karlovy-vary-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="卡罗维发利 Karlovy Vary 攻略">卡罗维发利 Karlovy Vary 攻略</button></p>
+        <ol class="plan-list"><li><time>上午</time><span>酒店退房，前往机场。</span></li><li><time>中午</time><span>办理值机、出境、登机。</span></li><li><time>下午/夜间</time><span>飞行。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>不安排上午景点，留足机场交通时间。</li><li>退房和机场接驳以酒店前台建议为准。</li></ul>
+        </details>
       </div>
     </article>
     
 
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3">
-      <img class="card-img" src="assets/brno.jpg" alt="布尔诺">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1晚</span>
+    <article class="day-card" id="day-15">
+      <img src="assets/budapest.jpg" alt="北京 -&gt; 上海">
+      <div class="day-content">
+        <div class="day-top">
+          <span>Day 15 · 周五</span>
+          <strong>2026-10-09</strong>
         </div>
-        <h3>布尔诺</h3>
-        <p class="en">Brno</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★<em>3</em></span>
-          <span><b>热门</b>★★★<em>3</em></span>
+        <h3>北京 -&gt; 上海</h3>
+        <p class="mood">回家</p>
+        <div class="mini-grid">
+          <p><b>国家/区域</b>中国</p>
+          <p><b>住宿</b>回家</p>
+          <p><b>已订/交通</b>CA1507 07:30 - 10:00</p>
         </div>
-        <p class="role">顺路中转/第二城市</p>
-        <p><strong>适合：</strong>想看更日常的捷克城市、摩拉维亚入口</p>
-        <p><strong>取舍：</strong>三国首游容易变成“多一站但不够深”。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="布尔诺 Brno 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B8%2583%25E5%25B0%2594%25E8%25AF%25BA%2520Brno%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/brno-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布尔诺 Brno 攻略">布尔诺 Brno 攻略</button></p>
+        <ol class="plan-list"><li><time>清晨</time><span>北京转机，按联程/非联程要求处理行李。</span></li><li><time>上午</time><span>抵达上海，行程结束。</span></li></ol>
+        <details>
+          <summary>注意和取舍</summary>
+          <ul><li>返程当天注意疲劳，尽量不要安排工作日程。</li></ul>
+        </details>
       </div>
     </article>
     
+    </section>
 
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="2.5">
-      <img class="card-img" src="assets/olomouc.jpg" alt="奥洛穆茨">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1晚</span>
-        </div>
-        <h3>奥洛穆茨</h3>
-        <p class="en">Olomouc</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★½<em>2.5</em></span>
-          <span><b>热门</b>★★½<em>2.5</em></span>
-        </div>
-        <p class="role">小众历史城</p>
-        <p><strong>适合：</strong>巴洛克广场、学生城市、避开热门线</p>
-        <p><strong>取舍：</strong>偏东，和主线衔接一般。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="奥洛穆茨 Olomouc 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25A5%25A5%25E6%25B4%259B%25E7%25A9%2586%25E8%258C%25A8%2520Olomouc%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/olomouc-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="奥洛穆茨 Olomouc 攻略">奥洛穆茨 Olomouc 攻略</button></p>
+    <section>
+      <div class="section-head">
+        <span>Booking List</span>
+        <h2>预约与购票清单</h2>
       </div>
-    </article>
+      <div class="booking-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>建议时间</th><th>优先级</th><th>说明</th></tr></thead>
+          <tbody>
+    <tr>
+      <td><a href="https://reservation.dish.co/widget/hydra-f2270630-899c-11ec-b1ce-5f1cb95273da" target="_blank" rel="noopener">U Modre kachnicky</a></td>
+      <td>9/27 午餐</td>
+      <td><span class="priority">高</span></td>
+      <td>布拉格正式餐，建议提前订。</td>
+    </tr>
     
 
-    <article class="card" data-section="捷克候选" data-country="捷克" data-rec="3">
-      <img class="card-img" src="assets/mikulov-lednice-valtice.jpg" alt="米库洛夫 / 莱德尼采">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1晚</span>
-        </div>
-        <h3>米库洛夫 / 莱德尼采</h3>
-        <p class="en">Mikulov / Lednice-Valtice</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★<em>3</em></span>
-          <span><b>热门</b>★★★<em>3</em></span>
-        </div>
-        <p class="role">酒乡/庄园</p>
-        <p><strong>适合：</strong>南摩拉维亚葡萄酒、庄园景观、慢旅行</p>
-        <p><strong>取舍：</strong>需要更细交通设计，先作为备选。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%25B1%25B3%25E5%25BA%2593%25E6%25B4%259B%25E5%25A4%25AB%2520%252F%2520%25E8%258E%25B1%25E5%25BE%25B7%25E5%25B0%25BC%25E9%2587%2587%2520Mikulov%2520%252F%2520Lednice-Valtice%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/mikulov-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略">米库洛夫 / 莱德尼采 Mikulov / Lednice-Valtice 攻略</button></p>
-      </div>
-    </article>
-    </div>
-            </section>
-            
-            <section class="section" id="奥地利候选">
-              <div class="section-head">
-                <p>维也纳稳，湖山漂亮但会增加绕路和天气风险。</p>
-                <h2>奥地利候选</h2>
-              </div>
-              <div class="grid">
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4.5">
-      <img class="card-img" src="assets/salzburg.jpg" alt="萨尔茨堡">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">1-2晚</span>
-        </div>
-        <h3>萨尔茨堡</h3>
-        <p class="en">Salzburg</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★½<em>4.5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
-        </div>
-        <p class="role">音乐老城/湖区入口</p>
-        <p><strong>适合：</strong>莫扎特、老城、城堡、阿尔卑斯入口</p>
-        <p><strong>取舍：</strong>往西绕路，通常要牺牲其他支线。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="萨尔茨堡 Salzburg 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E8%2590%25A8%25E5%25B0%2594%25E8%258C%25A8%25E5%25A0%25A1%2520Salzburg%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/salzburg-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="萨尔茨堡 Salzburg 攻略">萨尔茨堡 Salzburg 攻略</button></p>
-      </div>
-    </article>
+    <tr>
+      <td><a href="https://www.5schaetze.at/en/schafbergbahn/prices-and-timetables.html" target="_blank" rel="noopener">SchafbergBahn</a></td>
+      <td>9/30 上午</td>
+      <td><span class="priority">高</span></td>
+      <td>天气型项目，提前看天气和票。</td>
+    </tr>
     
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4">
-      <img class="card-img" src="assets/wachau-melk.jpg" alt="瓦豪河谷 / 梅尔克">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">日游</span>
-        </div>
-        <h3>瓦豪河谷 / 梅尔克</h3>
-        <p class="en">Wachau / Melk</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★<em>4</em></span>
-          <span><b>热门</b>★★★½<em>3.5</em></span>
-        </div>
-        <p class="role">低风险加餐</p>
-        <p><strong>适合：</strong>多瑙河、葡萄园、修道院、秋季风景</p>
-        <p><strong>取舍：</strong>适合从维也纳日游，不必换住宿。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="瓦豪河谷 / 梅尔克 Wachau / Melk 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%2593%25A6%25E8%25B1%25AA%25E6%25B2%25B3%25E8%25B0%25B7%2520%252F%2520%25E6%25A2%2585%25E5%25B0%2594%25E5%2585%258B%2520Wachau%2520%252F%2520Melk%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/melk-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="瓦豪河谷 / 梅尔克 Wachau / Melk 攻略">瓦豪河谷 / 梅尔克 Wachau / Melk 攻略</button></p>
-      </div>
-    </article>
+    <tr>
+      <td><a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank" rel="noopener">Salzwelten Hallstatt</a></td>
+      <td>10/1 上午</td>
+      <td><span class="priority">高</span></td>
+      <td>2026-09-01 后门票开放，建议提前买。</td>
+    </tr>
     
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="4">
-      <img class="card-img" src="assets/hallstatt-salzkammergut.jpg" alt="哈尔施塔特 / 湖区">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">1晚</span>
-        </div>
-        <h3>哈尔施塔特 / 湖区</h3>
-        <p class="en">Hallstatt / Salzkammergut</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★<em>4</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
-        </div>
-        <p class="role">明信片湖山</p>
-        <p><strong>适合：</strong>湖山、摄影、奥地利自然风光</p>
-        <p><strong>取舍：</strong>交通和天气成本高，不建议和太多支线同塞。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%2593%2588%25E5%25B0%2594%25E6%2596%25BD%25E5%25A1%2594%25E7%2589%25B9%2520%252F%2520%25E6%25B9%2596%25E5%258C%25BA%2520Hallstatt%2520%252F%2520Salzkammergut%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/hallstatt-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略">哈尔施塔特 / 湖区 Hallstatt / Salzkammergut 攻略</button></p>
-      </div>
-    </article>
+    <tr>
+      <td><a href="https://www.belvedere.at/en/visit/upper-belvedere" target="_blank" rel="noopener">Upper Belvedere</a></td>
+      <td>10/3 09:00</td>
+      <td><span class="priority">高</span></td>
+      <td>建议买时段票。</td>
+    </tr>
     
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="3.5">
-      <img class="card-img" src="assets/gosau.jpg" alt="戈绍">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">湖区顺带</span>
-        </div>
-        <h3>戈绍</h3>
-        <p class="en">Gosau</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★<em>3</em></span>
-        </div>
-        <p class="role">湖区备选</p>
-        <p><strong>适合：</strong>Gosausee、山景、比 Hallstatt 更安静</p>
-        <p><strong>取舍：</strong>适合已有湖区计划时加入；单独前往成本偏高。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="戈绍 Gosau 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E6%2588%2588%25E7%25BB%258D%2520Gosau%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/gosau-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="戈绍 Gosau 攻略">戈绍 Gosau 攻略</button></p>
-      </div>
-    </article>
+    <tr>
+      <td><a href="https://www.sisimuseum-hofburg.at/en/visitor-information/opening-hours" target="_blank" rel="noopener">Sisi Museum</a></td>
+      <td>10/4 11:30</td>
+      <td><span class="priority">中高</span></td>
+      <td>最后入场较早，别排太晚。</td>
+    </tr>
     
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="3">
-      <img class="card-img" src="assets/graz.jpg" alt="格拉茨">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">1-2晚</span>
-        </div>
-        <h3>格拉茨</h3>
-        <p class="en">Graz</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★<em>3</em></span>
-          <span><b>热门</b>★★★½<em>3.5</em></span>
-        </div>
-        <p class="role">设计/美食小众城</p>
-        <p><strong>适合：</strong>创意设计、街头艺术、美食、二刷感</p>
-        <p><strong>取舍：</strong>不是最短主线；本次优先级中等。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="格拉茨 Graz 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E6%25A0%25BC%25E6%258B%2589%25E8%258C%25A8%2520Graz%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/graz-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="格拉茨 Graz 攻略">格拉茨 Graz 攻略</button></p>
-      </div>
-    </article>
+    <tr>
+      <td><a href="https://jegy.opera.hu/" target="_blank" rel="noopener">Hungarian State Opera Tour</a></td>
+      <td>10/6 13:30 或 15:00</td>
+      <td><span class="priority">中</span></td>
+      <td>英文导览固定场次。</td>
+    </tr>
     
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="2.5">
-      <img class="card-img" src="assets/innsbruck.jpg" alt="因斯布鲁克">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">1-2晚</span>
-        </div>
-        <h3>因斯布鲁克</h3>
-        <p class="en">Innsbruck</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★½<em>2.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">阿尔卑斯城市</p>
-        <p><strong>适合：</strong>雪山城市、Nordkette、金顶屋</p>
-        <p><strong>取舍：</strong>距离明显偏西，12 天三国不建议优先。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="因斯布鲁克 Innsbruck 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%259B%25A0%25E6%2596%25AF%25E5%25B8%2583%25E9%25B2%2581%25E5%2585%258B%2520Innsbruck%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/innsbruck-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="因斯布鲁克 Innsbruck 攻略">因斯布鲁克 Innsbruck 攻略</button></p>
+    <tr>
+      <td><a href="https://orszaghazkonyvkiado.parlament.hu/en/web/visitors/home" target="_blank" rel="noopener">Hungarian Parliament Tour</a></td>
+      <td>10/6 下午</td>
+      <td><span class="priority">高</span></td>
+      <td>入内必须导览，官方票源优先。</td>
+    </tr>
+    </tbody>
+        </table>
       </div>
-    </article>
-    
+    </section>
 
-    <article class="card" data-section="奥地利候选" data-country="奥地利" data-rec="2.5">
-      <img class="card-img" src="assets/baden-near-vienna.jpg" alt="巴登">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">奥地利</span>
-          <span class="nights">半日/日游</span>
-        </div>
-        <h3>巴登</h3>
-        <p class="en">Baden near Vienna</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★½<em>2.5</em></span>
-          <span><b>热门</b>★★½<em>2.5</em></span>
-        </div>
-        <p class="role">维也纳周边温泉小镇</p>
-        <p><strong>适合：</strong>轻松半日、温泉、帝国气质</p>
-        <p><strong>取舍：</strong>不是三国首游核心。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="巴登 Baden near Vienna 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B7%25B4%25E7%2599%25BB%2520Baden%2520near%2520Vienna%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/baden-at.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="巴登 Baden near Vienna 攻略">巴登 Baden near Vienna 攻略</button></p>
+    <section>
+      <div class="section-head">
+        <span>Before Departure</span>
+        <h2>出发前 2 周复核</h2>
       </div>
-    </article>
-    </div>
-            </section>
-            
-            <section class="section" id="匈牙利候选">
-              <div class="section-head">
-                <p>布达佩斯外加点优先考虑轻量日游，再考虑酒乡/湖区慢线。</p>
-                <h2>匈牙利候选</h2>
-              </div>
-              <div class="grid">
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="4">
-      <img class="card-img" src="assets/szentendre-danube-bend.jpg" alt="圣安德烈 / 多瑙河湾">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">日游</span>
-        </div>
-        <h3>圣安德烈 / 多瑙河湾</h3>
-        <p class="en">Szentendre / Danube Bend</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★<em>4</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">布达佩斯轻量加餐</p>
-        <p><strong>适合：</strong>小镇、河湾、艺术氛围、低成本日游</p>
-        <p><strong>取舍：</strong>比 Eger/Balaton 更省时间，适合首游。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%259C%25A3%25E5%25AE%2589%25E5%25BE%25B7%25E7%2583%2588%2520%252F%2520%25E5%25A4%259A%25E7%2591%2599%25E6%25B2%25B3%25E6%25B9%25BE%2520Szentendre%2520%252F%2520Danube%2520Bend%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/szentendre-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略">圣安德烈 / 多瑙河湾 Szentendre / Danube Bend 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3.5">
-      <img class="card-img" src="assets/eger.jpg" alt="埃格尔">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">1晚/日游</span>
-        </div>
-        <h3>埃格尔</h3>
-        <p class="en">Eger</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★½<em>3.5</em></span>
-        </div>
-        <p class="role">城堡/酒窖/温泉</p>
-        <p><strong>适合：</strong>Eger Castle、美女谷酒窖、土耳其浴</p>
-        <p><strong>取舍：</strong>如果不喝酒或不住夜，收益下降。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="埃格尔 Eger 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%259F%2583%25E6%25A0%25BC%25E5%25B0%2594%2520Eger%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/eger-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="埃格尔 Eger 攻略">埃格尔 Eger 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3.5">
-      <img class="card-img" src="assets/balaton-tihany.jpg" alt="巴拉顿湖 / 蒂豪尼">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">1-2晚</span>
-        </div>
-        <h3>巴拉顿湖 / 蒂豪尼</h3>
-        <p class="en">Balaton / Tihany</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">湖区慢线</p>
-        <p><strong>适合：</strong>中欧大湖、火山丘、修道院、葡萄酒</p>
-        <p><strong>取舍：</strong>10月初已过盛夏水上氛围，更适合慢线。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B7%25B4%25E6%258B%2589%25E9%25A1%25BF%25E6%25B9%2596%2520%252F%2520%25E8%2592%2582%25E8%25B1%25AA%25E5%25B0%25BC%2520Balaton%2520%252F%2520Tihany%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/tihany-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略">巴拉顿湖 / 蒂豪尼 Balaton / Tihany 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3">
-      <img class="card-img" src="assets/pecs.jpg" alt="佩奇">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">1-2晚</span>
-        </div>
-        <h3>佩奇</h3>
-        <p class="en">Pecs</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★<em>3</em></span>
-          <span><b>热门</b>★★★<em>3</em></span>
-        </div>
-        <p class="role">艺术/南部酒乡</p>
-        <p><strong>适合：</strong>老城、Zsolnay、Villany 酒区、Mecsek Hills</p>
-        <p><strong>取舍：</strong>路线偏南，离主线远。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="佩奇 Pecs 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E4%25BD%25A9%25E5%25A5%2587%2520Pecs%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/pecs-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="佩奇 Pecs 攻略">佩奇 Pecs 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="3">
-      <img class="card-img" src="assets/gyor-pannonhalma.jpg" alt="杰尔 / 潘农哈尔马">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">1晚/顺路</span>
-        </div>
-        <h3>杰尔 / 潘农哈尔马</h3>
-        <p class="en">Gyor / Pannonhalma</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★<em>3</em></span>
-          <span><b>热门</b>★★½<em>2.5</em></span>
-        </div>
-        <p class="role">维也纳-布达佩斯之间支线</p>
-        <p><strong>适合：</strong>巴洛克老城、修道院、减少游客密度</p>
-        <p><strong>取舍：</strong>位置顺，但知名度较低。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E6%259D%25B0%25E5%25B0%2594%2520%252F%2520%25E6%25BD%2598%25E5%2586%259C%25E5%2593%2588%25E5%25B0%2594%25E9%25A9%25AC%2520Gyor%2520%252F%2520Pannonhalma%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/gyor-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略">杰尔 / 潘农哈尔马 Gyor / Pannonhalma 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="匈牙利候选" data-country="匈牙利" data-rec="2.5">
-      <img class="card-img" src="assets/sopron.jpg" alt="肖普朗">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">匈牙利</span>
-          <span class="nights">1晚</span>
-        </div>
-        <h3>肖普朗</h3>
-        <p class="en">Sopron</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★½<em>2.5</em></span>
-          <span><b>热门</b>★★½<em>2.5</em></span>
-        </div>
-        <p class="role">边境老城/酒乡</p>
-        <p><strong>适合：</strong>奥匈边境、老城、葡萄酒</p>
-        <p><strong>取舍：</strong>不是首游刚需。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="肖普朗 Sopron 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E8%2582%2596%25E6%2599%25AE%25E6%259C%2597%2520Sopron%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/sopron-hu.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="肖普朗 Sopron 攻略">肖普朗 Sopron 攻略</button></p>
-      </div>
-    </article>
-    </div>
-            </section>
-            
-            <section class="section" id="布拉格内部">
-              <div class="section-head">
-                <p>这些不影响跨城路线，后续排布拉格每日行程时再细化。</p>
-                <h2>布拉格内部</h2>
-              </div>
-              <div class="grid">
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="5">
-      <img class="card-img" src="assets/prague-castle.jpg" alt="布拉格城堡">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">半日</span>
-        </div>
-        <h3>布拉格城堡</h3>
-        <p class="en">Prague Castle</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★★<em>5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
-        </div>
-        <p class="role">布拉格核心景点</p>
-        <p><strong>适合：</strong>城堡区、圣维特、老城俯瞰</p>
-        <p><strong>取舍：</strong>游客多，适合早点到或错峰。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="布拉格城堡 Prague Castle 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%25B8%2583%25E6%258B%2589%25E6%25A0%25BC%25E5%259F%258E%25E5%25A0%25A1%2520Prague%2520Castle%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-prague-castle/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="布拉格城堡 Prague Castle 攻略">布拉格城堡 Prague Castle 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="5">
-      <img class="card-img" src="assets/charles-bridge.jpg" alt="查理大桥">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1-2小时</span>
-        </div>
-        <h3>查理大桥</h3>
-        <p class="en">Charles Bridge</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★★<em>5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
-        </div>
-        <p class="role">城市灵魂</p>
-        <p><strong>适合：</strong>老城和小城区连接、日出/日落摄影</p>
-        <p><strong>取舍：</strong>白天拥挤，清晨体验最好。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="查理大桥 Charles Bridge 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E6%259F%25A5%25E7%2590%2586%25E5%25A4%25A7%25E6%25A1%25A5%2520Charles%2520Bridge%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-charles-bridge/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="查理大桥 Charles Bridge 攻略">查理大桥 Charles Bridge 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="4.5">
-      <img class="card-img" src="assets/old-town-square-astronomical-clock.jpg" alt="老城广场 / 天文钟">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1-2小时</span>
-        </div>
-        <h3>老城广场 / 天文钟</h3>
-        <p class="en">Old Town Square / Astronomical Clock</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★½<em>4.5</em></span>
-          <span><b>热门</b>★★★★★<em>5</em></span>
-        </div>
-        <p class="role">老城核心</p>
-        <p><strong>适合：</strong>天文钟、泰恩教堂、老城广场氛围</p>
-        <p><strong>取舍：</strong>商业化明显，但第一次仍值得看。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E8%2580%2581%25E5%259F%258E%25E5%25B9%25BF%25E5%259C%25BA%2520%252F%2520%25E5%25A4%25A9%25E6%2596%2587%25E9%2592%259F%2520Old%2520Town%2520Square%2520%252F%2520Astronomical%2520Clock%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-old-town-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略">老城广场 / 天文钟 Old Town Square / Astronomical Clock 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="4">
-      <img class="card-img" src="assets/powder-tower.jpg" alt="火药塔">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">30-60分钟</span>
-        </div>
-        <h3>火药塔</h3>
-        <p class="en">Powder Tower</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★★<em>4</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">老城地标</p>
-        <p><strong>适合：</strong>哥特塔楼、老城动线顺路</p>
-        <p><strong>取舍：</strong>适合顺路，不必单独绕行。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="火药塔 Powder Tower 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%2581%25AB%25E8%258D%25AF%25E5%25A1%2594%2520Powder%2520Tower%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-powder-tower/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="火药塔 Powder Tower 攻略">火药塔 Powder Tower 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/wenceslas-square-national-museum.jpg" alt="瓦茨拉夫广场 / 国家博物馆">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1-2小时</span>
-        </div>
-        <h3>瓦茨拉夫广场 / 国家博物馆</h3>
-        <p class="en">Wenceslas Square / National Museum</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">新城区轴线</p>
-        <p><strong>适合：</strong>城市历史、博物馆外观、购物餐饮</p>
-        <p><strong>取舍：</strong>观光感不如老城强。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%2593%25A6%25E8%258C%25A8%25E6%258B%2589%25E5%25A4%25AB%25E5%25B9%25BF%25E5%259C%25BA%2520%252F%2520%25E5%259B%25BD%25E5%25AE%25B6%25E5%258D%259A%25E7%2589%25A9%25E9%25A6%2586%2520Wenceslas%2520Square%2520%252F%2520National%2520Museum%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-wenceslas-square/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略">瓦茨拉夫广场 / 国家博物馆 Wenceslas Square / National Museum 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/dancing-house.jpg" alt="跳舞的房子">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">30分钟</span>
-        </div>
-        <h3>跳舞的房子</h3>
-        <p class="en">Dancing House</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">现代建筑打卡</p>
-        <p><strong>适合：</strong>建筑摄影、河边散步</p>
-        <p><strong>取舍：</strong>更适合顺路拍照。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="跳舞的房子 Dancing House 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E8%25B7%25B3%25E8%2588%259E%25E7%259A%2584%25E6%2588%25BF%25E5%25AD%2590%2520Dancing%2520House%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="跳舞的房子 Dancing House 攻略">跳舞的房子 Dancing House 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/head-of-franz-kafka.jpg" alt="卡夫卡头像">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">20-40分钟</span>
-        </div>
-        <h3>卡夫卡头像</h3>
-        <p class="en">Head of Franz Kafka</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">现代雕塑打卡</p>
-        <p><strong>适合：</strong>卡夫卡主题、动态雕塑、顺路补给</p>
-        <p><strong>取舍：</strong>停留时间短，适合和新城区串联。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="卡夫卡头像 Head of Franz Kafka 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%258D%25A1%25E5%25A4%25AB%25E5%258D%25A1%25E5%25A4%25B4%25E5%2583%258F%2520Head%2520of%2520Franz%2520Kafka%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="卡夫卡头像 Head of Franz Kafka 攻略">卡夫卡头像 Head of Franz Kafka 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/lennon-wall.jpg" alt="列侬墙">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">30分钟</span>
-        </div>
-        <h3>列侬墙</h3>
-        <p class="en">Lennon Wall</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★★<em>4</em></span>
-        </div>
-        <p class="role">小城区打卡</p>
-        <p><strong>适合：</strong>涂鸦、和平主题、查理大桥西岸顺路</p>
-        <p><strong>取舍：</strong>现场体验轻，适合顺路。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="列侬墙 Lennon Wall 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%2588%2597%25E4%25BE%25AC%25E5%25A2%2599%2520Lennon%2520Wall%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="列侬墙 Lennon Wall 攻略">列侬墙 Lennon Wall 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/havel-market.jpg" alt="哈维尔集市">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">30-60分钟</span>
-        </div>
-        <h3>哈维尔集市</h3>
-        <p class="en">Havel Market</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★½<em>3.5</em></span>
-        </div>
-        <p class="role">市集补给</p>
-        <p><strong>适合：</strong>水果、小纪念品、老城顺路</p>
-        <p><strong>取舍：</strong>不必专门安排很久。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="哈维尔集市 Havel Market 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E5%2593%2588%25E7%25BB%25B4%25E5%25B0%2594%25E9%259B%2586%25E5%25B8%2582%2520Havel%2520Market%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/city/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="哈维尔集市 Havel Market 攻略">哈维尔集市 Havel Market 攻略</button></p>
-      </div>
-    </article>
-    
-
-    <article class="card" data-section="布拉格内部" data-country="捷克" data-rec="3.5">
-      <img class="card-img" src="assets/mucha-museum.jpg" alt="穆夏美术馆">
-      <div class="card-body">
-        <div class="meta-row">
-          <span class="country">捷克</span>
-          <span class="nights">1小时</span>
-        </div>
-        <h3>穆夏美术馆</h3>
-        <p class="en">Mucha Museum</p>
-        <div class="score-row">
-          <span><b>推荐</b>★★★½<em>3.5</em></span>
-          <span><b>热门</b>★★★½<em>3.5</em></span>
-        </div>
-        <p class="role">艺术小馆</p>
-        <p><strong>适合：</strong>新艺术风格、文创、雨天备选</p>
-        <p><strong>取舍：</strong>不是所有人都刚需。</p>
-        <div class="actions">
-          <button class="xhs-open" type="button" data-keyword="穆夏美术馆 Mucha Museum 攻略" data-app="https://oia.xiaohongshu.com/oia?deeplink=xhsdiscover%3A%2F%2Fsearch%2Fresult%3Fkeyword%3D%25E7%25A9%2586%25E5%25A4%258F%25E7%25BE%258E%25E6%259C%25AF%25E9%25A6%2586%2520Mucha%2520Museum%2520%25E6%2594%25BB%25E7%2595%25A5%26source%3Dweb_search_result_notes&amp;downloadLink=https%3A%2F%2Fwww.xiaohongshu.com%2FredOia">小红书App搜索</button>
-          <a class="hotel" href="https://www.agoda.com/hotels-near-mucha-museum/attractions/prague-cz.html" target="_blank" rel="noopener">住宿酒店</a>
-        </div>
-        <p class="search-tip">搜索词：<button class="copy-keyword" type="button" data-keyword="穆夏美术馆 Mucha Museum 攻略">穆夏美术馆 Mucha Museum 攻略</button></p>
-      </div>
-    </article>
-    </div>
-            </section>
-            
-    <footer class="footer">
-      <p>图片来自 Wikipedia/Wikimedia 缩略图；地点判断来自前期官方旅游站、小红书参考链接和路线取舍分析。Agoda 链接已尽量使用城市页或景点附近酒店页，避免跳到泛搜索页。</p>
-    </footer>
+      <ul class="checklist"><li>航班：机场、航站楼、行李直挂、值机时间。</li>
+<li>火车：每段出发/抵达站、站台、换乘时间，尤其 10 分钟换乘段。</li>
+<li>酒店：入住/退房时间、是否含早餐、城市税/押金。</li>
+<li>天气：SchafbergBahn、Hallstatt、Gosausee 都很吃天气。</li>
+<li>门票：Salzwelten、Belvedere、Sisi Museum、Hungarian Parliament、Opera Tour。</li>
+<li>现金/卡：捷克克朗、欧元、匈牙利福林；市场/小店备少量现金。</li></ul>
+    </section>
   </main>
-  <div class="toast" id="toast">已复制搜索词</div>
-  <script>
-    function showToast(text) {
-      const toast = document.getElementById('toast');
-      toast.textContent = text;
-      toast.classList.add('show');
-      window.clearTimeout(window.__toastTimer);
-      window.__toastTimer = window.setTimeout(() => toast.classList.remove('show'), 1800);
-    }
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast('已复制：' + text);
-      } catch (error) {
-        showToast('请手动复制搜索词');
-      }
-    }
-    function openXhs(keyword, appUrl) {
-      copyText(keyword);
-      showToast('正在打开小红书 App，搜索词已复制');
-      window.setTimeout(() => {
-        window.location.href = appUrl;
-      }, 120);
-    }
-    document.addEventListener('click', (event) => {
-      const xhsButton = event.target.closest('.xhs-open');
-      if (xhsButton) {
-        openXhs(xhsButton.dataset.keyword, xhsButton.dataset.app);
-        return;
-      }
-      const copyButton = event.target.closest('.copy-keyword');
-      if (copyButton) copyText(copyButton.dataset.keyword);
-    });
-  </script>
+  <footer class="footer">
+    <p>本网页依据正式行程单和项目内确认事实生成。航站楼、站台、酒店入住时间、门票开放和天气相关项目，请以出发前票面与官网实时信息为准。</p>
+  </footer>
 </body>
 </html>
