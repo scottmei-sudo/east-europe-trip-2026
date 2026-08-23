@@ -127,10 +127,16 @@
       font-weight: 800;
     }
     .transfer-card h3, .hotel-card h3 { margin: 6px 0 8px; font-size: 19px; line-height: 1.2; }
+    .hotel-card h3 a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .transfer-card p, .hotel-card p { margin: 5px 0; color: #4f5d56; font-size: 14px; }
-    .hotel-card a {
-      display: inline-flex;
+    .hotel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 12px;
+    }
+    .hotel-actions a {
+      display: inline-flex;
       padding: 8px 10px;
       background: #173d34;
       color: #fff;
@@ -176,8 +182,15 @@
       background: #f3eadc;
       font-size: 13px;
       min-height: 74px;
+      overflow-wrap: anywhere;
     }
     .mini-grid b { display: block; margin-bottom: 5px; color: #173d34; }
+    .stay-link {
+      color: #173d34;
+      font-weight: 800;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
     .plan-list {
       list-style: none;
       padding: 0;
@@ -210,6 +223,8 @@
     th { background: #173d34; color: #fff; font-size: 13px; }
     td { font-size: 14px; }
     td a { color: #173d34; font-weight: 800; }
+    .booking-name { display: block; }
+    .booking-cn { display: block; margin-top: 3px; color: #6b746e; font-size: 13px; }
     .priority { display: inline-block; padding: 4px 8px; background: #f0d06d; font-weight: 900; }
     .checklist {
       display: grid;
@@ -332,51 +347,66 @@
       <div class="hotel-grid">
     <article class="hotel-card">
       <span>仁川/首尔机场</span>
-      <h3>Incheon Airport Global Hotel &amp; Suites</h3>
+      <h3><a href="https://www.agoda.com/en-us/h63282298/hotel/incheon-kr.html" target="_blank" rel="noopener">Incheon Airport Global Hotel &amp; Suites</a></h3>
       <p>2026-09-25 至 2026-09-26</p>
       <p>8 Huinbawi-ro 59beon-gil, Yeongjong-gu, Incheon</p>
       <p>+82-32-7461700</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Incheon+Airport+Global+Hotel+%26+Suites+8+Huinbawi-ro+59beon-gil+Incheon" target="_blank" rel="noopener">打开地图</a>
+      <div class="hotel-actions">
+        <a href="https://www.agoda.com/en-us/h63282298/hotel/incheon-kr.html" target="_blank" rel="noopener">Agoda 详情</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Incheon+Airport+Global+Hotel+%26+Suites+8+Huinbawi-ro+59beon-gil+Incheon" target="_blank" rel="noopener">打开地图</a>
+      </div>
     </article>
     
 
     <article class="hotel-card">
       <span>布拉格</span>
-      <h3>Grandium Hotel Prague</h3>
+      <h3><a href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></h3>
       <p>2026-09-26 至 2026-09-29</p>
       <p>Politickych veznu 12/913, Prague 01, Prague, Czech Republic, 11000</p>
       <p>+420 211 159 856</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Grandium+Hotel+Prague+Politickych+veznu+12+Prague" target="_blank" rel="noopener">打开地图</a>
+      <div class="hotel-actions">
+        <a href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Agoda 详情</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Grandium+Hotel+Prague+Politickych+veznu+12+Prague" target="_blank" rel="noopener">打开地图</a>
+      </div>
     </article>
     
 
     <article class="hotel-card">
       <span>巴德伊舍</span>
-      <h3>Siebter Himmel</h3>
+      <h3><a href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">Siebter Himmel</a></h3>
       <p>2026-09-29 至 2026-10-02</p>
       <p>Grazer Strasse 9, 4820 Bad Ischl, Austria</p>
       <p>+43 676 7218684</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Siebter+Himmel+Grazer+Strasse+9+Bad+Ischl" target="_blank" rel="noopener">打开地图</a>
+      <div class="hotel-actions">
+        <a href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">住宿详情</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Siebter+Himmel+Grazer+Strasse+9+Bad+Ischl" target="_blank" rel="noopener">打开地图</a>
+      </div>
     </article>
     
 
     <article class="hotel-card">
       <span>维也纳</span>
-      <h3>Leonardo Hotel Vienna City West</h3>
+      <h3><a href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></h3>
       <p>2026-10-02 至 2026-10-05</p>
       <p>3-5 Graumanngasse, Rudolfsheim-Fuenfhaus, Vienna, Austria, 1150</p>
       <p>+43 1 4180055</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo+Hotel+Vienna+City+West+Graumanngasse+Vienna" target="_blank" rel="noopener">打开地图</a>
+      <div class="hotel-actions">
+        <a href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Agoda 详情</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo+Hotel+Vienna+City+West+Graumanngasse+Vienna" target="_blank" rel="noopener">打开地图</a>
+      </div>
     </article>
     
 
     <article class="hotel-card">
       <span>布达佩斯</span>
-      <h3>Hilton Budapest</h3>
+      <h3><a href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></h3>
       <p>2026-10-05 至 2026-10-08</p>
       <p>Hess A. ter 1-3, Castle District Budavar, Budapest, Hungary, 1014</p>
       <p>+36 1 889 6922</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Hilton+Budapest+Hess+Andras+ter+1-3+Budapest" target="_blank" rel="noopener">打开地图</a>
+      <div class="hotel-actions">
+        <a href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Agoda 详情</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Hilton+Budapest+Hess+Andras+ter+1-3+Budapest" target="_blank" rel="noopener">打开地图</a>
+      </div>
     </article>
     </div>
     </section>
@@ -398,7 +428,7 @@
         <p class="mood">出发与转机恢复</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>中国 / 韩国</p>
-          <p><b>住宿</b>Incheon Airport Global Hotel &amp; Suites</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/h63282298/hotel/incheon-kr.html" target="_blank" rel="noopener">Incheon Airport Global Hotel &amp; Suites</a></p>
           <p><b>已订/交通</b>KE892 08:50 - 11:55</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>提前到机场，办理值机、托运和出境。</span></li><li><time>中午</time><span>抵达首尔后处理入境/转机住宿，前往机场酒店。</span></li><li><time>晚上</time><span>酒店附近简单晚餐，早点休息，不进首尔市区。</span></li></ol>
@@ -421,7 +451,7 @@
         <p class="mood">抵达欧洲，轻量适应</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>韩国 / 捷克</p>
-          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>KE969 11:05 - 17:05</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>从机场酒店前往航站楼，办理登机。</span></li><li><time>下午</time><span>抵达布拉格，入境、取行李，前往 Grandium Hotel Prague。</span></li><li><time>晚上</time><span>酒店周边轻松散步，可去 Wenceslas Square 或老城边缘。</span></li></ol>
@@ -444,7 +474,7 @@
         <p class="mood">城堡、小城、查理桥</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>捷克</p>
-          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:30</time><span>从酒店出发，坐车上城堡区，尽量少爬坡。</span></li><li><time>09:15</time><span>Prague Castle 布拉格城堡区域。</span></li><li><time>09:45</time><span>St. Vitus Cathedral 圣维特大教堂，优先进入。</span></li><li><time>12:30</time><span>小城午餐，优先 U Modre kachnicky 或附近捷克餐。</span></li><li><time>14:00</time><span>John Lennon Wall 列侬墙，小城街区散步。</span></li><li><time>15:30</time><span>Charles Bridge 查理大桥，从小城走回老城。</span></li><li><time>18:30</time><span>晚餐：Pork&#x27;s / Ribs of Prague / Lavka 三选一。</span></li></ol>
@@ -467,7 +497,7 @@
         <p class="mood">老城、火药塔、市集</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>捷克</p>
-          <p><b>住宿</b>Grandium Hotel Prague</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:30</time><span>Cafe Louvre 早餐/早午餐。</span></li><li><time>09:45</time><span>Wenceslas Square 瓦茨拉夫广场。</span></li><li><time>10:30</time><span>Powder Tower 火药塔，可登塔或只拍外观。</span></li><li><time>11:30</time><span>Old Town Square、Tyn Church、Astronomical Clock。</span></li><li><time>12:45</time><span>午餐：Kantyna，注意不接受预约，建议错峰。</span></li><li><time>14:30</time><span>Havelsky Market 哈维尔市集，顺路买小纪念品。</span></li><li><time>15:30</time><span>Creme de la Creme / Kolacherie / Trdlo 甜品补给。</span></li><li><time>18:30</time><span>晚餐：Kolkovna V Kolkovne / Pivovar U Supa。</span></li></ol>
@@ -490,8 +520,8 @@
         <p class="mood">跨城移动，抵达后休息</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>捷克 / 奥地利</p>
-          <p><b>住宿</b>Siebter Himmel</p>
-          <p><b>已订/交通</b>EC 333 + IC 644 + REX 4412</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">Siebter Himmel</a></p>
+          <p><b>已订/交通</b>EC 333 10:21-14:06 · IC 644 14:30-14:58 · REX 4412 15:08-16:03</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>酒店退房，预留足够时间去火车站。</span></li><li><time>10:21-16:03</time><span>三段火车前往 Bad Ischl，换乘时间分别约 24 分钟和 10 分钟。</span></li><li><time>傍晚</time><span>入住 Siebter Himmel，Bad Ischl 市中心轻量 citywalk。</span></li></ol>
         <details>
@@ -513,7 +543,7 @@
         <p class="mood">SchafbergBahn 与湖区</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
-          <p><b>住宿</b>Siebter Himmel</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">Siebter Himmel</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 St. Wolfgang / SchafbergBahn。</span></li><li><time>09:30</time><span>SchafbergBahn 登山火车，建议提前买票并预留天气弹性。</span></li><li><time>11:00</time><span>山顶观景和拍照。</span></li><li><time>12:30</time><span>山上或 St. Wolfgang 午餐。</span></li><li><time>14:30</time><span>返回湖边小镇散步。</span></li><li><time>17:00</time><span>回 Bad Ischl，市区散步和晚餐。</span></li></ol>
@@ -536,7 +566,7 @@
         <p class="mood">盐矿、观景台、湖边</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
-          <p><b>住宿</b>Siebter Himmel</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">Siebter Himmel</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 Hallstatt。</span></li><li><time>09:30</time><span>Hallstatt Skywalk / Aussichtspunkt Hallstatt。</span></li><li><time>10:30</time><span>Salzwelten Hallstatt 盐矿。</span></li><li><time>13:00</time><span>Hallstatt 午餐，湖边短走。</span></li><li><time>15:00</time><span>前往 Gosausee。</span></li><li><time>16:00</time><span>Gosausee 湖边散步，天气好时保留 1-1.5 小时。</span></li><li><time>18:30</time><span>返回 Bad Ischl 晚餐。</span></li></ol>
@@ -559,8 +589,8 @@
         <p class="mood">跨城移动，维也纳落脚</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
-          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
-          <p><b>已订/交通</b>R 4413 + IC 741 + REX 1653</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></p>
+          <p><b>已订/交通</b>R 4413 14:53-15:52 · IC 741 16:01-17:29 · REX 1653 17:36-18:37</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>Bad Ischl 轻松早餐，整理行李，补买路上食品。</span></li><li><time>14:53-18:37</time><span>三段火车前往维也纳。</span></li><li><time>晚上</time><span>入住 Leonardo Hotel Vienna City West，酒店周边晚餐。</span></li></ol>
         <details>
@@ -582,7 +612,7 @@
         <p class="mood">美景宫、卡尔教堂、金色大厅</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
-          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>09:00</time><span>Upper Belvedere 美景宫上宫，建议预约时段票。</span></li><li><time>11:30</time><span>美景宫花园/下宫外观。</span></li><li><time>12:30</time><span>午餐。</span></li><li><time>14:00</time><span>Karlskirche 卡尔教堂。</span></li><li><time>15:30</time><span>Musikverein 金色大厅外观/参观或音乐会预留。</span></li><li><time>17:00</time><span>市中心咖啡馆休息。</span></li><li><time>19:00</time><span>晚餐，若有音乐会则按演出时间调整。</span></li></ol>
@@ -605,7 +635,7 @@
         <p class="mood">内城、霍夫堡、教堂线</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
-          <p><b>住宿</b>Leonardo Hotel Vienna City West</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>09:00</time><span>St. Stephen&#x27;s Cathedral 圣斯蒂芬主教座堂。</span></li><li><time>10:30</time><span>Pfarre St. Michael 圣弥额尔堂。</span></li><li><time>11:00</time><span>Hofburg 霍夫堡区域散步。</span></li><li><time>11:30</time><span>Sisi Museum 茜茜公主博物馆，建议提前预约/购票。</span></li><li><time>13:30</time><span>午餐 + 咖啡馆休息。</span></li><li><time>15:30</time><span>Votivkirche 沃蒂夫教堂。</span></li><li><time>17:00</time><span>Ringstrasse 或市政厅周边散步。</span></li></ol>
@@ -628,8 +658,8 @@
         <p class="mood">跨城移动，城堡区夜景</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利 / 匈牙利</p>
-          <p><b>住宿</b>Hilton Budapest</p>
-          <p><b>已订/交通</b>EC 147 + R 4633</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></p>
+          <p><b>已订/交通</b>EC 147 14:00-17:02 · R 4633 17:12-17:19</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>维也纳轻松早餐，退房，避免安排大型博物馆。</span></li><li><time>14:00-17:19</time><span>火车前往布达佩斯。</span></li><li><time>傍晚</time><span>入住 Hilton Budapest，休息。</span></li><li><time>晚上</time><span>城堡区夜景散步，优先渔人堡/马加什教堂外观。</span></li></ol>
         <details>
@@ -651,7 +681,7 @@
         <p class="mood">佩斯城市轴线</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>匈牙利</p>
-          <p><b>住宿</b>Hilton Budapest</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>09:00</time><span>Central Market Hall 中央市场，适合早餐/小吃/伴手礼。</span></li><li><time>11:00</time><span>沿多瑙河或搭车前往市中心。</span></li><li><time>13:30</time><span>Hungarian State Opera House 国家歌剧院，建议预约英文导览。</span></li><li><time>15:00</time><span>St. Stephen&#x27;s Basilica 圣伊什特万圣殿，含穹顶观景可选。</span></li><li><time>16:30</time><span>Parliament Building 国会大厦外观/导览。</span></li><li><time>18:30</time><span>多瑙河边黄昏散步。</span></li></ol>
@@ -674,7 +704,7 @@
         <p class="mood">布达城堡山</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>匈牙利</p>
-          <p><b>住宿</b>Hilton Budapest</p>
+          <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></p>
           <p><b>已订/交通</b>步行 + 公共交通</p>
         </div>
         <ol class="plan-list"><li><time>08:30</time><span>Fisherman&#x27;s Bastion 渔人堡，住在城堡区可早起避人潮。</span></li><li><time>09:30</time><span>Matthias Church 马加什教堂。</span></li><li><time>11:00</time><span>Buda Castle 布达城堡区域。</span></li><li><time>12:30</time><span>城堡区午餐/咖啡。</span></li><li><time>14:30</time><span>下山前往 Szechenyi Chain Bridge 塞切尼链桥。</span></li><li><time>16:00</time><span>多瑙河两岸散步或回酒店休息。</span></li><li><time>19:00</time><span>告别晚餐，可选择河景餐厅或城堡区附近。</span></li></ol>
@@ -743,7 +773,10 @@
           <thead><tr><th>项目</th><th>建议时间</th><th>优先级</th><th>说明</th></tr></thead>
           <tbody>
     <tr>
-      <td><a href="https://reservation.dish.co/widget/hydra-f2270630-899c-11ec-b1ce-5f1cb95273da" target="_blank" rel="noopener">U Modre kachnicky</a></td>
+      <td>
+        <a class="booking-name" href="https://reservation.dish.co/widget/hydra-f2270630-899c-11ec-b1ce-5f1cb95273da" target="_blank" rel="noopener">U Modre kachnicky</a>
+        <span class="booking-cn">蓝鸭餐厅</span>
+      </td>
       <td>9/27 午餐</td>
       <td><span class="priority">高</span></td>
       <td>布拉格正式餐，建议提前订。</td>
@@ -751,7 +784,10 @@
     
 
     <tr>
-      <td><a href="https://www.5schaetze.at/en/schafbergbahn/prices-and-timetables.html" target="_blank" rel="noopener">SchafbergBahn</a></td>
+      <td>
+        <a class="booking-name" href="https://www.5schaetze.at/en/schafbergbahn/prices-and-timetables.html" target="_blank" rel="noopener">SchafbergBahn</a>
+        <span class="booking-cn">沙夫山登山火车</span>
+      </td>
       <td>9/30 上午</td>
       <td><span class="priority">高</span></td>
       <td>天气型项目，提前看天气和票。</td>
@@ -759,7 +795,10 @@
     
 
     <tr>
-      <td><a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank" rel="noopener">Salzwelten Hallstatt</a></td>
+      <td>
+        <a class="booking-name" href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank" rel="noopener">Salzwelten Hallstatt</a>
+        <span class="booking-cn">哈尔施塔特盐矿</span>
+      </td>
       <td>10/1 上午</td>
       <td><span class="priority">高</span></td>
       <td>2026-09-01 后门票开放，建议提前买。</td>
@@ -767,7 +806,10 @@
     
 
     <tr>
-      <td><a href="https://www.belvedere.at/en/visit/upper-belvedere" target="_blank" rel="noopener">Upper Belvedere</a></td>
+      <td>
+        <a class="booking-name" href="https://www.belvedere.at/en/visit/upper-belvedere" target="_blank" rel="noopener">Upper Belvedere</a>
+        <span class="booking-cn">美景宫上宫</span>
+      </td>
       <td>10/3 09:00</td>
       <td><span class="priority">高</span></td>
       <td>建议买时段票。</td>
@@ -775,7 +817,10 @@
     
 
     <tr>
-      <td><a href="https://www.sisimuseum-hofburg.at/en/visitor-information/opening-hours" target="_blank" rel="noopener">Sisi Museum</a></td>
+      <td>
+        <a class="booking-name" href="https://www.sisimuseum-hofburg.at/en/visitor-information/opening-hours" target="_blank" rel="noopener">Sisi Museum</a>
+        <span class="booking-cn">茜茜公主博物馆</span>
+      </td>
       <td>10/4 11:30</td>
       <td><span class="priority">中高</span></td>
       <td>最后入场较早，别排太晚。</td>
@@ -783,7 +828,10 @@
     
 
     <tr>
-      <td><a href="https://jegy.opera.hu/" target="_blank" rel="noopener">Hungarian State Opera Tour</a></td>
+      <td>
+        <a class="booking-name" href="https://jegy.opera.hu/" target="_blank" rel="noopener">Hungarian State Opera Tour</a>
+        <span class="booking-cn">匈牙利国家歌剧院导览</span>
+      </td>
       <td>10/6 13:30 或 15:00</td>
       <td><span class="priority">中</span></td>
       <td>英文导览固定场次。</td>
@@ -791,7 +839,10 @@
     
 
     <tr>
-      <td><a href="https://orszaghazkonyvkiado.parlament.hu/en/web/visitors/home" target="_blank" rel="noopener">Hungarian Parliament Tour</a></td>
+      <td>
+        <a class="booking-name" href="https://orszaghazkonyvkiado.parlament.hu/en/web/visitors/home" target="_blank" rel="noopener">Hungarian Parliament Tour</a>
+        <span class="booking-cn">匈牙利国会大厦导览</span>
+      </td>
       <td>10/6 下午</td>
       <td><span class="priority">高</span></td>
       <td>入内必须导览，官方票源优先。</td>
