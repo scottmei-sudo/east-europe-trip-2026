@@ -222,6 +222,29 @@
       border-bottom: 1px solid #e7dacb;
     }
     .plan-list time { color: #7b4b2a; font-weight: 800; font-size: 13px; }
+    .meal-block { margin-top: 18px; }
+    .meal-block h4 { margin: 0 0 6px; color: #173d34; font-size: 15px; }
+    .meal-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid #e7dacb; }
+    .meal-list li {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid #e7dacb;
+    }
+    .meal-list li > span { color: #7b4b2a; font-size: 13px; font-weight: 800; }
+    .meal-list a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      color: #173d34;
+      font-weight: 800;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .meal-list small { flex: 0 0 auto; color: #6b746e; font-size: 12px; font-weight: 700; }
     details {
       margin-top: 14px;
       padding: 12px;
@@ -455,6 +478,7 @@
           <p><b>已订/交通</b>KE892 08:50 - 11:55</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>提前到机场，办理值机、托运和出境。</span></li><li><time>中午</time><span>抵达首尔后处理入境/转机住宿，前往机场酒店。</span></li><li><time>晚上</time><span>酒店附近简单晚餐，早点休息，不进首尔市区。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>第二天 11:05 起飞，今晚以恢复体力为主。</li><li>航站楼、行李直挂以韩航票面和柜台为准。</li></ul>
@@ -477,7 +501,8 @@
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>KE969 11:05 - 17:05</p>
         </div>
-        <ol class="plan-list"><li><time>上午</time><span>从机场酒店前往航站楼，办理登机。</span></li><li><time>下午</time><span>抵达布拉格，入境、取行李，前往 Grandium Hotel Prague。</span></li><li><time>晚上</time><span>酒店周边轻松散步，可去 Wenceslas Square 或老城边缘。</span></li></ol>
+        <ol class="plan-list"><li><time>上午</time><span>从机场酒店前往航站楼，办理登机。</span></li><li><time>下午</time><span>抵达布拉格，入境、取行李，前往 Grandium Hotel Prague。</span></li><li><time>晚上</time><span>酒店周边轻松散步，晚餐前往 Kantýna。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>晚餐</span><a href="https://maps.app.goo.gl/WuUuJxdgFPDx9eHn7" target="_blank" rel="noopener">Kantýna<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
           <ul><li>抵达日不安排查理桥/城堡这类大景点。</li><li>晚餐不要订太死，按入境和交通实际耗时调整。</li></ul>
@@ -494,16 +519,17 @@
           <strong>2026-09-27</strong>
         </div>
         <h3>布拉格</h3>
-        <p class="mood">城堡、小城、查理桥</p>
+        <p class="mood">佩特任、城堡、小城、查理桥</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>捷克</p>
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <ol class="plan-list"><li><time>08:30</time><span>从酒店出发，坐车上城堡区，尽量少爬坡。</span></li><li><time>09:15</time><span>Prague Castle 布拉格城堡区域。</span></li><li><time>09:45</time><span>St. Vitus Cathedral 圣维特大教堂，优先进入。</span></li><li><time>12:30</time><span>小城午餐，优先 U Modre kachnicky 或附近捷克餐。</span></li><li><time>14:00</time><span>John Lennon Wall 列侬墙，小城街区散步。</span></li><li><time>15:30</time><span>Charles Bridge 查理大桥，从小城走回老城。</span></li><li><time>18:30</time><span>晚餐：Pork&#x27;s / Ribs of Prague / Lavka 三选一。</span></li></ol>
+        <ol class="plan-list"><li><time>08:30</time><span>从酒店出发前往 Petřín Hill，优先使用公共交通减少爬坡。</span></li><li><time>09:15</time><span>Petřínská rozhledna 佩特任瞭望塔。</span></li><li><time>10:30</time><span>Prague Castle 布拉格城堡区域。</span></li><li><time>11:00</time><span>St. Vitus Cathedral 圣维特大教堂，优先进入。</span></li><li><time>12:45</time><span>在 Pork&#x27;s Mostecka 午餐。</span></li><li><time>14:15</time><span>John Lennon Wall 列侬墙，小城街区散步。</span></li><li><time>15:15</time><span>Charles Bridge 查理大桥，从小城走回老城。</span></li><li><time>16:15</time><span>Staropražské tradiční Trdlo 甜品休息。</span></li><li><time>18:30</time><span>在 U Modré Kachničky Restaurant 晚餐。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>午餐</span><a href="https://maps.app.goo.gl/eAi6QF6mwxRQr7cX6" target="_blank" rel="noopener">Pork&#x27;s Mostecka<small>Google 地图</small></a></li><li><span>甜品</span><a href="https://maps.app.goo.gl/fFS37ZuN5ftwukkn8" target="_blank" rel="noopener">Staropražské tradiční Trdlo<small>Google 地图</small></a></li><li><span>晚餐</span><a href="https://maps.app.goo.gl/A9PemEUrksm2rBM49" target="_blank" rel="noopener">U Modré Kachničky Restaurant<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>核心保留：圣维特大教堂、查理大桥、列侬墙。</li><li>如果下雨，减少桥塔/户外停留，把午餐和咖啡时间拉长。</li></ul>
+          <ul><li>核心保留：圣维特大教堂、查理大桥、列侬墙。</li><li>佩特任瞭望塔受天气影响较大，雨雾天可缩短停留。</li></ul>
         </details>
       </div>
     </article>
@@ -523,10 +549,11 @@
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/grandium-prague/hotel/prague-cz.html" target="_blank" rel="noopener">Grandium Hotel Prague</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <ol class="plan-list"><li><time>08:30</time><span>Cafe Louvre 早餐/早午餐。</span></li><li><time>09:45</time><span>Wenceslas Square 瓦茨拉夫广场。</span></li><li><time>10:30</time><span>Powder Tower 火药塔，可登塔或只拍外观。</span></li><li><time>11:30</time><span>Old Town Square、Tyn Church、Astronomical Clock。</span></li><li><time>12:45</time><span>午餐：Kantyna，注意不接受预约，建议错峰。</span></li><li><time>14:30</time><span>Havelsky Market 哈维尔市集，顺路买小纪念品。</span></li><li><time>15:30</time><span>Creme de la Creme / Kolacherie / Trdlo 甜品补给。</span></li><li><time>18:30</time><span>晚餐：Kolkovna V Kolkovne / Pivovar U Supa。</span></li></ol>
+        <ol class="plan-list"><li><time>09:00</time><span>Powder Tower 火药塔，可登塔或只拍外观。</span></li><li><time>10:15</time><span>Old Town Square 老城广场。</span></li><li><time>11:00</time><span>Prague Astronomical Clock 布拉格天文钟。</span></li><li><time>11:30</time><span>Havel&#x27;s Market 哈维尔市集，顺路买小纪念品。</span></li><li><time>12:45</time><span>前往 Novotného lávka 201/1 午餐。</span></li><li><time>15:30</time><span>Kolacherie Kampus Hybernská 甜品休息。</span></li><li><time>18:30</time><span>在 Ribs of Prague 晚餐。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>午餐</span><a href="https://maps.app.goo.gl/oyZAmb4XbnpFudpd6" target="_blank" rel="noopener">Novotného lávka 201/1<small>Google 地图</small></a></li><li><span>甜品</span><a href="https://maps.app.goo.gl/bZWcL5q2aNkgi77f7" target="_blank" rel="noopener">Kolacherie Kampus Hybernská<small>Google 地图</small></a></li><li><span>晚餐</span><a href="https://maps.app.goo.gl/EdtZAt3scddzkQoF8" target="_blank" rel="noopener">Ribs of Prague<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>如果前一天很累，Dancing House 可删。</li><li>如果想看博物馆，可把下午一段替换为 Mucha Museum。</li></ul>
+          <ul><li>老城景点集中，适合步行串联。</li><li>若前一天较累，可压缩登塔和市集停留时间。</li></ul>
         </details>
       </div>
     </article>
@@ -546,7 +573,8 @@
           <p><b>住宿</b><a class="stay-link" href="https://www.booking.com/hotel/at/sibter-himmel.en-gb.html" target="_blank" rel="noopener">Siebter Himmel</a></p>
           <p><b>已订/交通</b>EC 333 10:21-14:06 · IC 644 14:30-14:58 · REX 4412 15:08-16:03<a class="ticket-link" href="assets/train-ticket-prague-bad-ischl.jpg" target="_blank" rel="noopener">查看票据</a></p>
         </div>
-        <ol class="plan-list"><li><time>上午</time><span>酒店退房，预留足够时间去火车站。</span></li><li><time>10:21-16:03</time><span>三段火车前往 Bad Ischl，换乘时间分别约 24 分钟和 10 分钟。</span></li><li><time>傍晚</time><span>入住 Siebter Himmel，Bad Ischl 市中心轻量 citywalk。</span></li></ol>
+        <ol class="plan-list"><li><time>上午</time><span>酒店退房，预留足够时间去火车站。</span></li><li><time>10:21-16:03</time><span>三段火车前往 Bad Ischl，换乘时间分别约 24 分钟和 10 分钟。</span></li><li><time>傍晚</time><span>入住 Siebter Himmel，Bad Ischl 市中心轻量 citywalk。</span></li><li><time>晚上</time><span>在 Trauntown 晚餐。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>晚餐</span><a href="https://maps.app.goo.gl/JHY6fFdsGPqmZDgN7" target="_blank" rel="noopener">Trauntown<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
           <ul><li>10 分钟换乘较紧，前一段晚点时要迅速确认下一班站台。</li><li>当天不安排重景点。</li></ul>
@@ -570,6 +598,7 @@
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 St. Wolfgang / SchafbergBahn。</span></li><li><time>09:30</time><span>SchafbergBahn 登山火车，建议提前买票并预留天气弹性。</span></li><li><time>11:00</time><span>山顶观景和拍照。</span></li><li><time>12:30</time><span>山上或 St. Wolfgang 午餐。</span></li><li><time>14:30</time><span>返回湖边小镇散步。</span></li><li><time>17:00</time><span>回 Bad Ischl，市区散步和晚餐。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>遇到大雨/大雾可改 Bad Ischl + St. Wolfgang 轻松线。</li><li>旅游景点通常不含在 Guest Mobility Ticket 内，票价需单独确认。</li></ul>
@@ -593,6 +622,7 @@
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
         <ol class="plan-list"><li><time>08:00</time><span>Bad Ischl 出发前往 Hallstatt。</span></li><li><time>09:30</time><span>Hallstatt Skywalk / Aussichtspunkt Hallstatt。</span></li><li><time>10:30</time><span>Salzwelten Hallstatt 盐矿。</span></li><li><time>13:00</time><span>Hallstatt 午餐，湖边短走。</span></li><li><time>15:00</time><span>前往 Gosausee。</span></li><li><time>16:00</time><span>Gosausee 湖边散步，天气好时保留 1-1.5 小时。</span></li><li><time>18:30</time><span>返回 Bad Ischl 晚餐。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>Salzwelten Hallstatt 2026 年 9 月后恢复开放，建议提前订票。</li><li>盐矿需要保暖衣物和适合走路的鞋。</li></ul>
@@ -616,6 +646,7 @@
           <p><b>已订/交通</b>R 4413 14:53-15:52 · IC 741 16:01-17:29 · REX 1653 17:36-18:37<a class="ticket-link" href="assets/train-ticket-bad-ischl-vienna.jpg" target="_blank" rel="noopener">查看票据</a></p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>Bad Ischl 轻松早餐，整理行李，补买路上食品。</span></li><li><time>14:53-18:37</time><span>三段火车前往维也纳。</span></li><li><time>晚上</time><span>入住 Leonardo Hotel Vienna City West，酒店周边晚餐。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>抵达维也纳已是傍晚，不安排博物馆/宫殿。</li><li>换乘时间短，优先保证交通。</li></ul>
@@ -632,16 +663,17 @@
           <strong>2026-10-03</strong>
         </div>
         <h3>维也纳</h3>
-        <p class="mood">美景宫、卡尔教堂、金色大厅</p>
+        <p class="mood">维也纳内城、霍夫堡、教堂线</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <ol class="plan-list"><li><time>09:00</time><span>Upper Belvedere 美景宫上宫，建议预约时段票。</span></li><li><time>11:30</time><span>美景宫花园/下宫外观。</span></li><li><time>12:30</time><span>午餐。</span></li><li><time>14:00</time><span>Karlskirche 卡尔教堂。</span></li><li><time>15:30</time><span>Musikverein 金色大厅外观/参观或音乐会预留。</span></li><li><time>17:00</time><span>市中心咖啡馆休息。</span></li><li><time>19:00</time><span>晚餐，若有音乐会则按演出时间调整。</span></li></ol>
+        <ol class="plan-list"><li><time>09:00</time><span>St. Stephen&#x27;s Cathedral 圣斯蒂芬主教座堂。</span></li><li><time>10:30</time><span>Pfarre St. Michael 圣弥额尔堂。</span></li><li><time>11:00</time><span>Hofburg 霍夫堡区域散步。</span></li><li><time>11:30</time><span>Sisi Museum 茜茜公主博物馆，建议提前预约/购票。</span></li><li><time>13:30</time><span>午餐与咖啡馆休息。</span></li><li><time>15:30</time><span>Votivkirche 沃蒂夫教堂。</span></li><li><time>17:00</time><span>Gelateria La Romana dal 1947 甜品休息。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>甜品</span><a href="https://maps.app.goo.gl/Bp7kU4nqKjz7YCax5" target="_blank" rel="noopener">Gelateria La Romana dal 1947<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>Upper Belvedere 热门展厅建议提前买时段票。</li><li>金色大厅如果想入内，需确认当天导览或演出票。</li></ul>
+          <ul><li>Sisi Museum 最后入场较早，不要放到傍晚。</li><li>内城景点步行较多，中午留出完整休息时间。</li></ul>
         </details>
       </div>
     </article>
@@ -655,16 +687,17 @@
           <strong>2026-10-04</strong>
         </div>
         <h3>维也纳</h3>
-        <p class="mood">内城、霍夫堡、教堂线</p>
+        <p class="mood">金色大厅音乐会、美景宫、卡尔教堂</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>奥地利</p>
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/leonardo-hotel-vienna-otto-wagner/hotel/vienna-at.html" target="_blank" rel="noopener">Leonardo Hotel Vienna City West</a></p>
           <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <ol class="plan-list"><li><time>09:00</time><span>St. Stephen&#x27;s Cathedral 圣斯蒂芬主教座堂。</span></li><li><time>10:30</time><span>Pfarre St. Michael 圣弥额尔堂。</span></li><li><time>11:00</time><span>Hofburg 霍夫堡区域散步。</span></li><li><time>11:30</time><span>Sisi Museum 茜茜公主博物馆，建议提前预约/购票。</span></li><li><time>13:30</time><span>午餐 + 咖啡馆休息。</span></li><li><time>15:30</time><span>Votivkirche 沃蒂夫教堂。</span></li><li><time>17:00</time><span>Ringstrasse 或市政厅周边散步。</span></li></ol>
+        <ol class="plan-list"><li><time>10:15</time><span>抵达 Musikverein 金色大厅，预留安检和入场时间。</span></li><li><time>11:00</time><span>金色大厅交响乐。</span></li><li><time>13:00</time><span>午餐与休息。</span></li><li><time>14:30</time><span>Upper Belvedere 美景宫上宫，建议预约时段票。</span></li><li><time>16:30</time><span>美景宫花园/下宫外观。</span></li><li><time>17:30</time><span>Karlskirche 卡尔教堂。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>Sisi Museum 最后入场较早，不要放到傍晚。</li><li>这天是周日，餐厅和商店营业状态需提前确认。</li></ul>
+          <ul><li>金色大厅 11:00 的交响乐为固定时间，其他安排围绕演出调整。</li><li>Upper Belvedere 热门展厅建议提前买时段票。</li></ul>
         </details>
       </div>
     </article>
@@ -685,6 +718,7 @@
           <p><b>已订/交通</b>EC 147 14:00-17:02 · R 4633 17:12-17:19<a class="ticket-link" href="assets/train-ticket-vienna-budapest.jpg" target="_blank" rel="noopener">查看票据</a></p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>维也纳轻松早餐，退房，避免安排大型博物馆。</span></li><li><time>14:00-17:19</time><span>火车前往布达佩斯。</span></li><li><time>傍晚</time><span>入住 Hilton Budapest，休息。</span></li><li><time>晚上</time><span>城堡区夜景散步，优先渔人堡/马加什教堂外观。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>Hilton Budapest 位于布达城堡区，夜景优势很大。</li><li>拖行李上山动线要提前查好。</li></ul>
@@ -701,16 +735,17 @@
           <strong>2026-10-06</strong>
         </div>
         <h3>布达佩斯</h3>
-        <p class="mood">佩斯城市轴线</p>
+        <p class="mood">布达城堡山与链桥</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>匈牙利</p>
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></p>
-          <p><b>已订/交通</b>公共交通 + 步行</p>
+          <p><b>已订/交通</b>步行 + 公共交通</p>
         </div>
-        <ol class="plan-list"><li><time>09:00</time><span>Central Market Hall 中央市场，适合早餐/小吃/伴手礼。</span></li><li><time>11:00</time><span>沿多瑙河或搭车前往市中心。</span></li><li><time>13:30</time><span>Hungarian State Opera House 国家歌剧院，建议预约英文导览。</span></li><li><time>15:00</time><span>St. Stephen&#x27;s Basilica 圣伊什特万圣殿，含穹顶观景可选。</span></li><li><time>16:30</time><span>Parliament Building 国会大厦外观/导览。</span></li><li><time>18:30</time><span>多瑙河边黄昏散步。</span></li></ol>
+        <ol class="plan-list"><li><time>08:30</time><span>Fisherman&#x27;s Bastion 渔人堡，住在城堡区可早起避人潮。</span></li><li><time>09:30</time><span>Matthias Church 马加什教堂。</span></li><li><time>11:00</time><span>Buda Castle 布达城堡区域。</span></li><li><time>12:30</time><span>城堡区午餐/咖啡。</span></li><li><time>14:30</time><span>下山前往 Szechenyi Chain Bridge 塞切尼链桥。</span></li><li><time>16:00</time><span>多瑙河两岸散步或回酒店休息。</span></li><li><time>18:30</time><span>在 Kisharang Étkezde 晚餐。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>晚餐</span><a href="https://maps.app.goo.gl/nJCvrz6Bx4JwCzG3A" target="_blank" rel="noopener">Kisharang Étkezde<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>国会大厦入内必须参加导览，官方票务优先。</li><li>国家歌剧院英文导览通常每日固定场次。</li></ul>
+          <ul><li>酒店就在布达城堡区，适合早起先看渔人堡。</li><li>链桥安排在下山后，可顺路进入佩斯一侧晚餐。</li></ul>
         </details>
       </div>
     </article>
@@ -724,16 +759,17 @@
           <strong>2026-10-07</strong>
         </div>
         <h3>布达佩斯</h3>
-        <p class="mood">布达城堡山</p>
+        <p class="mood">佩斯城市轴线</p>
         <div class="mini-grid">
           <p><b>国家/区域</b>匈牙利</p>
           <p><b>住宿</b><a class="stay-link" href="https://www.agoda.com/en-us/hilton-budapest/hotel/budapest-hu.html" target="_blank" rel="noopener">Hilton Budapest</a></p>
-          <p><b>已订/交通</b>步行 + 公共交通</p>
+          <p><b>已订/交通</b>公共交通 + 步行</p>
         </div>
-        <ol class="plan-list"><li><time>08:30</time><span>Fisherman&#x27;s Bastion 渔人堡，住在城堡区可早起避人潮。</span></li><li><time>09:30</time><span>Matthias Church 马加什教堂。</span></li><li><time>11:00</time><span>Buda Castle 布达城堡区域。</span></li><li><time>12:30</time><span>城堡区午餐/咖啡。</span></li><li><time>14:30</time><span>下山前往 Szechenyi Chain Bridge 塞切尼链桥。</span></li><li><time>16:00</time><span>多瑙河两岸散步或回酒店休息。</span></li><li><time>19:00</time><span>告别晚餐，可选择河景餐厅或城堡区附近。</span></li></ol>
+        <ol class="plan-list"><li><time>09:00</time><span>Central Market Hall 中央市场，适合早餐/小吃/伴手礼。</span></li><li><time>11:00</time><span>沿城市轴线前往国家歌剧院一带。</span></li><li><time>12:00</time><span>在 Cirkusz Café 午餐。</span></li><li><time>13:30</time><span>Hungarian State Opera House 国家歌剧院，建议预约英文导览。</span></li><li><time>15:00</time><span>St. Stephen&#x27;s Basilica 圣伊什特万圣殿。</span></li><li><time>16:30</time><span>Hungarian Parliament Building 匈牙利国会大厦外观/导览。</span></li><li><time>19:00</time><span>在 Kiskakukk Restaurant 晚餐。</span></li></ol>
+<div class="meal-block"><h4>当日餐饮</h4><ul class="meal-list"><li><span>午餐</span><a href="https://maps.app.goo.gl/EU3epMUy4pKpDxJW9" target="_blank" rel="noopener">Cirkusz Café<small>Google 地图</small></a></li><li><span>晚餐</span><a href="https://maps.app.goo.gl/PMqNUcADgqPfekxk6" target="_blank" rel="noopener">Kiskakukk Restaurant<small>Google 地图</small></a></li></ul></div>
         <details>
           <summary>注意和取舍</summary>
-          <ul><li>这天住址就在布达城堡区，非常适合早晚各看一次城堡山景色。</li><li>如果 Day 12 国会大厦没有入内，可把国会导览挪到这天下午。</li></ul>
+          <ul><li>国会大厦入内必须参加导览，官方票务优先。</li><li>国家歌剧院英文导览通常每日固定场次。</li></ul>
         </details>
       </div>
     </article>
@@ -754,6 +790,7 @@
           <p><b>已订/交通</b>CA720 13:00 - 次日 04:10</p>
         </div>
         <ol class="plan-list"><li><time>上午</time><span>酒店退房，前往机场。</span></li><li><time>中午</time><span>办理值机、出境、登机。</span></li><li><time>下午/夜间</time><span>飞行。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>不安排上午景点，留足机场交通时间。</li><li>退房和机场接驳以酒店前台建议为准。</li></ul>
@@ -777,6 +814,7 @@
           <p><b>已订/交通</b>CA1507 07:30 - 10:00</p>
         </div>
         <ol class="plan-list"><li><time>清晨</time><span>北京转机，按联程/非联程要求处理行李。</span></li><li><time>上午</time><span>抵达上海，行程结束。</span></li></ol>
+
         <details>
           <summary>注意和取舍</summary>
           <ul><li>返程当天注意疲劳，尽量不要安排工作日程。</li></ul>
@@ -797,10 +835,10 @@
           <tbody>
     <tr>
       <td>
-        <a class="booking-name" href="https://reservation.dish.co/widget/hydra-f2270630-899c-11ec-b1ce-5f1cb95273da" target="_blank" rel="noopener">U Modre kachnicky</a>
+        <a class="booking-name" href="https://reservation.dish.co/widget/hydra-f2270630-899c-11ec-b1ce-5f1cb95273da" target="_blank" rel="noopener">U Modré Kachničky</a>
         <span class="booking-cn">蓝鸭餐厅</span>
       </td>
-      <td>9/27 午餐</td>
+      <td>9/27 晚餐</td>
       <td><span class="priority">高</span></td>
       <td>布拉格正式餐，建议提前订。</td>
     </tr>
@@ -833,7 +871,7 @@
         <a class="booking-name" href="https://www.belvedere.at/en/visit/upper-belvedere" target="_blank" rel="noopener">Upper Belvedere</a>
         <span class="booking-cn">美景宫上宫</span>
       </td>
-      <td>10/3 09:00</td>
+      <td>10/4 14:30</td>
       <td><span class="priority">高</span></td>
       <td>建议买时段票。</td>
     </tr>
@@ -844,7 +882,7 @@
         <a class="booking-name" href="https://www.sisimuseum-hofburg.at/en/visitor-information/opening-hours" target="_blank" rel="noopener">Sisi Museum</a>
         <span class="booking-cn">茜茜公主博物馆</span>
       </td>
-      <td>10/4 11:30</td>
+      <td>10/3 11:30</td>
       <td><span class="priority">中高</span></td>
       <td>最后入场较早，别排太晚。</td>
     </tr>
@@ -855,7 +893,7 @@
         <a class="booking-name" href="https://jegy.opera.hu/" target="_blank" rel="noopener">Hungarian State Opera Tour</a>
         <span class="booking-cn">匈牙利国家歌剧院导览</span>
       </td>
-      <td>10/6 13:30 或 15:00</td>
+      <td>10/7 13:30 或 15:00</td>
       <td><span class="priority">中</span></td>
       <td>英文导览固定场次。</td>
     </tr>
@@ -866,7 +904,7 @@
         <a class="booking-name" href="https://orszaghazkonyvkiado.parlament.hu/en/web/visitors/home" target="_blank" rel="noopener">Hungarian Parliament Tour</a>
         <span class="booking-cn">匈牙利国会大厦导览</span>
       </td>
-      <td>10/6 下午</td>
+      <td>10/7 下午</td>
       <td><span class="priority">高</span></td>
       <td>入内必须导览，官方票源优先。</td>
     </tr>
